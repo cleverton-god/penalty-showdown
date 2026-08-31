@@ -942,7 +942,7 @@ html, body {
 }
 
 .pitch-container.zoom {
-  transform: scale(1.08);
+  transform: none;
 }
 
 .goal-area {

@@ -101,9 +101,7 @@ export class UI {
   }
 
   zoomPitch(zoom) {
-    const pitch = document.getElementById('pitch');
-    if (zoom) pitch.classList.add('zoom');
-    else pitch.classList.remove('zoom');
+    // Zoom desativado — o gol não aumenta ao chutar
   }
 
   celebrate(on) {
