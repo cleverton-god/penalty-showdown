@@ -1067,10 +1067,13 @@ html, body {
   aspect-ratio: 5 / 9;
   z-index: 5;
   transform: translateX(-50%);
-  transition: left 0.42s cubic-bezier(0.2, 1.15, 0.3, 1),
-              bottom 0.42s cubic-bezier(0.2, 1.15, 0.3, 1),
-              transform 0.42s cubic-bezier(0.2, 1.15, 0.3, 1),
-              filter 0.3s ease;
+  transform-origin: center bottom;
+  transition:
+    left 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
+    bottom 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
+    transform 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
+    filter 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .gk-body {
@@ -1175,7 +1178,7 @@ html, body {
   border-radius: 6px;
   border: 1px solid #222;
   top: 0;
-  transition: transform 0.28s cubic-bezier(0.22, 1.2, 0.36, 1);
+  transition: transform 0.32s cubic-bezier(0.2, 0.85, 0.25, 1);
 }
 
 .gk-arm.left {
@@ -1243,41 +1246,190 @@ html, body {
   box-shadow: 0 1px 0 #e74c3c;
 }
 
-/* Dive states */
+/* Dive states — poses mais naturais */
 .goalkeeper.dive-left {
-  left: 16%;
-  bottom: 28%;
-  transform: translateX(-50%) rotate(-30deg) scale(0.98);
+  left: 20%;
+  bottom: 16%;
+  transform: translateX(-50%) rotate(-18deg);
 }
 
 .goalkeeper.dive-right {
-  left: 84%;
-  bottom: 28%;
-  transform: translateX(-50%) rotate(30deg) scale(0.98);
+  left: 80%;
+  bottom: 16%;
+  transform: translateX(-50%) rotate(18deg);
 }
 
 .goalkeeper.dive-up {
   left: 50%;
-  bottom: 46%;
-  transform: translateX(-50%) scale(1.06);
+  bottom: 44%;
+  transform: translateX(-50%) scale(1.05);
 }
 
 .goalkeeper.dive-stay {
   left: 50%;
-  bottom: 22%;
-  transform: translateX(-50%) scale(1.02);
+  bottom: 20%;
+  transform: translateX(-50%) scale(1.03);
 }
 
-.goalkeeper.dive-stay .gk-arm.left { transform: rotate(-5deg) !important; }
-.goalkeeper.dive-stay .gk-arm.right { transform: rotate(5deg) !important; }
+/* Braços no mergulho esquerda */
+.goalkeeper.dive-left .gk-arm.left {
+  transform: rotate(-35deg) !important;
+}
+.goalkeeper.dive-left .gk-arm.right {
+  transform: rotate(55deg) !important;
+}
+.goalkeeper.dive-left .gk-leg.left {
+  transform: rotate(18deg);
+  transform-origin: top center;
+}
+.goalkeeper.dive-left .gk-leg.right {
+  transform: rotate(-8deg);
+  transform-origin: top center;
+}
 
-.goalkeeper.celebrate .gk-arm.left { transform: rotate(-55deg) !important; }
-.goalkeeper.celebrate .gk-arm.right { transform: rotate(55deg) !important; }
+/* Braços no mergulho direita */
+.goalkeeper.dive-right .gk-arm.left {
+  transform: rotate(-55deg) !important;
+}
+.goalkeeper.dive-right .gk-arm.right {
+  transform: rotate(35deg) !important;
+}
+.goalkeeper.dive-right .gk-leg.left {
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+.goalkeeper.dive-right .gk-leg.right {
+  transform: rotate(-18deg);
+  transform-origin: top center;
+}
+
+/* Pulo / defesa alta */
+.goalkeeper.dive-up .gk-arm.left {
+  transform: rotate(-50deg) !important;
+}
+.goalkeeper.dive-up .gk-arm.right {
+  transform: rotate(50deg) !important;
+}
+.goalkeeper.dive-up .gk-leg.left,
+.goalkeeper.dive-up .gk-leg.right {
+  transform: rotate(0deg) scaleY(0.92);
+  transform-origin: top center;
+}
+
+/* Fica no meio */
+.goalkeeper.dive-stay .gk-arm.left {
+  transform: rotate(-12deg) !important;
+}
+.goalkeeper.dive-stay .gk-arm.right {
+  transform: rotate(12deg) !important;
+}
+
+.gk-leg {
+  transition: transform 0.32s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+
+/* ===== SAVE: mãos na bola (por zona) — alinhado ao alvo da bola ===== */
+.goalkeeper.save-pose .gk-arm {
+  transition: transform 0.3s cubic-bezier(0.33, 0.12, 0.2, 1);
+}
+
+/* Alta esquerda (0) */
+.goalkeeper.save-z0 {
+  left: 24% !important;
+  bottom: 48% !important;
+  transform: translateX(-50%) rotate(-16deg) !important;
+}
+.goalkeeper.save-z0 .gk-arm.left { transform: rotate(-68deg) !important; }
+.goalkeeper.save-z0 .gk-arm.right { transform: rotate(8deg) !important; }
+
+/* Alta centro (1) */
+.goalkeeper.save-z1 {
+  left: 50% !important;
+  bottom: 52% !important;
+  transform: translateX(-50%) scale(1.05) !important;
+}
+.goalkeeper.save-z1 .gk-arm.left { transform: rotate(-62deg) !important; }
+.goalkeeper.save-z1 .gk-arm.right { transform: rotate(62deg) !important; }
+
+/* Alta direita (2) */
+.goalkeeper.save-z2 {
+  left: 76% !important;
+  bottom: 48% !important;
+  transform: translateX(-50%) rotate(16deg) !important;
+}
+.goalkeeper.save-z2 .gk-arm.left { transform: rotate(-8deg) !important; }
+.goalkeeper.save-z2 .gk-arm.right { transform: rotate(68deg) !important; }
+
+/* Meio esquerda (3) */
+.goalkeeper.save-z3 {
+  left: 22% !important;
+  bottom: 30% !important;
+  transform: translateX(-50%) rotate(-18deg) !important;
+}
+.goalkeeper.save-z3 .gk-arm.left { transform: rotate(-52deg) !important; }
+.goalkeeper.save-z3 .gk-arm.right { transform: rotate(38deg) !important; }
+
+/* Meio centro (4) */
+.goalkeeper.save-z4 {
+  left: 50% !important;
+  bottom: 32% !important;
+  transform: translateX(-50%) scale(1.04) !important;
+}
+.goalkeeper.save-z4 .gk-arm.left { transform: rotate(-42deg) !important; }
+.goalkeeper.save-z4 .gk-arm.right { transform: rotate(42deg) !important; }
+
+/* Meio direita (5) */
+.goalkeeper.save-z5 {
+  left: 78% !important;
+  bottom: 30% !important;
+  transform: translateX(-50%) rotate(18deg) !important;
+}
+.goalkeeper.save-z5 .gk-arm.left { transform: rotate(-38deg) !important; }
+.goalkeeper.save-z5 .gk-arm.right { transform: rotate(52deg) !important; }
+
+/* Baixa esquerda (6) */
+.goalkeeper.save-z6 {
+  left: 24% !important;
+  bottom: 12% !important;
+  transform: translateX(-50%) rotate(-24deg) !important;
+}
+.goalkeeper.save-z6 .gk-arm.left { transform: rotate(-28deg) !important; }
+.goalkeeper.save-z6 .gk-arm.right { transform: rotate(48deg) !important; }
+
+/* Baixa centro (7) */
+.goalkeeper.save-z7 {
+  left: 50% !important;
+  bottom: 10% !important;
+  transform: translateX(-50%) !important;
+}
+.goalkeeper.save-z7 .gk-arm.left { transform: rotate(-28deg) !important; }
+.goalkeeper.save-z7 .gk-arm.right { transform: rotate(28deg) !important; }
+
+/* Baixa direita (8) */
+.goalkeeper.save-z8 {
+  left: 76% !important;
+  bottom: 12% !important;
+  transform: translateX(-50%) rotate(24deg) !important;
+}
+.goalkeeper.save-z8 .gk-arm.left { transform: rotate(-48deg) !important; }
+.goalkeeper.save-z8 .gk-arm.right { transform: rotate(28deg) !important; }
+
+/* Luvas em destaque na defesa */
+.goalkeeper.save-pose .gk-arm::after {
+  width: 165%;
+  height: 44%;
+  box-shadow: 0 0 12px rgba(255, 70, 70, 0.5);
+}
+
+
+.goalkeeper.celebrate .gk-arm.left { transform: rotate(-50deg) !important; }
+.goalkeeper.celebrate .gk-arm.right { transform: rotate(50deg) !important; }
 
 .goalkeeper.sad {
-  opacity: 0.8;
-  transform: translateX(-50%) scale(0.92);
-  filter: grayscale(0.25);
+  opacity: 0.85;
+  transform: translateX(-50%) scale(0.95);
+  filter: grayscale(0.2);
 }
 
 /* Ball inside goal-area */

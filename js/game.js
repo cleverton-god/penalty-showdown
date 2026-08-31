@@ -264,24 +264,41 @@ export class Game {
     const power = this.power;
     this.audio.play('kick');
 
-    // GK reads the shot and dives mid-flight (feels reactive)
-    const dive = this.gk.chooseDive(zone);
-    const flightMs = Math.max(380, 720 - power * 3);
-    setTimeout(() => this.gk.animate(dive), Math.min(280, flightMs * 0.35));
+    // 1) Escolhe mergulho "natural" do goleiro
+    let dive = this.gk.chooseDive(zone);
 
-    // Resolve outcome with balanced odds
+    // 2) Resolve resultado ANTES da animação
     let result;
-    const missChance = power > 92 ? 0.16 : (power < 18 ? 0.20 : 0.05);
-    const cornerBonus = [0, 2, 6, 8].includes(zone) ? 0.05 : 0;
+    const missChance = power > 94 ? 0.12 : (power < 15 ? 0.14 : 0.03);
+    const cornerBonus = [0, 2, 6, 8].includes(zone) ? 0.03 : 0;
     if (Math.random() < missChance + cornerBonus) {
       result = 'miss';
     } else if (this.gk.isSave(zone, power, dive)) {
       result = 'save';
+      // Na defesa, vai direto à zona da bola (sem corrigir depois)
+      const side = { 0:'left',1:'center',2:'right',3:'left',4:'center',5:'right',6:'left',7:'center',8:'right' }[zone];
+      const height = { 0:'high',1:'high',2:'high',3:'mid',4:'mid',5:'mid',6:'low',7:'low',8:'low' }[zone];
+      if (side === 'left') dive = 'left';
+      else if (side === 'right') dive = 'right';
+      else dive = height === 'high' ? 'up' : 'stay';
+      this.gk.currentDir = dive;
     } else {
       result = 'goal';
     }
 
-    await this.ball.shoot(zone, power, result, dive);
+    const flightMs = Math.max(400, 700 - power * 2.8);
+    // Goleiro começa cedo e chega junto com a bola
+    const gkDelay = Math.round(flightMs * 0.12);
+    const gkMove = Math.round(flightMs * 0.78);
+    setTimeout(() => {
+      if (result === 'save') {
+        this.gk.animate('save', zone, gkMove);
+      } else {
+        this.gk.animate(dive, null, gkMove);
+      }
+    }, gkDelay);
+
+    await this.ball.shoot(zone, power, result, dive, flightMs);
 
     // Result
     this.state = STATES.RESULT;
@@ -299,7 +316,7 @@ export class Game {
       this.currentPlayer.addShot('save');
       this.audio.play('save');
       this.ui.showResult('save');
-      this.gk.animate('celebrate');
+      // Pose de defesa já foi aplicada durante o voo da bola
     } else {
       this.currentPlayer.addShot('miss');
       this.audio.play('miss');
@@ -313,7 +330,7 @@ export class Game {
       this.ui.hideResult();
       this.gk.reset();
       this._nextShot();
-    }, 2200);
+    }, 2400);
   }
 
   _nextShot() {

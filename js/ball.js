@@ -25,7 +25,7 @@ export class Ball {
     if (inner) inner.style.animation = '';
   }
 
-  shoot(zone, power, result, diveDir = 'stay') {
+  shoot(zone, power, result, diveDir = 'stay', durationMs = null) {
     return new Promise(resolve => {
       if (!this.el) { resolve(); return; }
 
@@ -51,38 +51,25 @@ export class Ball {
         else { targetX = 30 + Math.random() * 40; targetY = 8; }
       }
 
-      const duration = Math.max(380, 720 - power * 3);
+      const duration = durationMs ?? Math.max(400, 700 - power * 2.8);
       const scale = 0.55 + (targetY / 100) * 0.25;
 
       if (result === 'save') {
-        // Bola vai até a posição do goleiro (defesa legível)
-        let saveX = 50;
-        let saveY = 48;
-        if (diveDir === 'left') { saveX = 28; saveY = 42; }
-        else if (diveDir === 'right') { saveX = 72; saveY = 42; }
-        else if (diveDir === 'up') { saveX = 50; saveY = 30; }
-        else { saveX = 50; saveY = 48; } // stay
-
-        // Mistura leve com o alvo do chute
-        saveX = saveX * 0.7 + targetX * 0.3;
-        saveY = saveY * 0.7 + targetY * 0.3;
-
-        this._animateTo(saveX, saveY, duration * 0.7, 0.7, () => {
-          this._animateTo(saveX - 2, saveY + 6, 160, 0.6, resolve);
+        // // Bola encontra as luvas na zona
+        const saveX = targetX;
+        const saveY = targetY + 2;
+        this._animateTo(saveX, saveY, duration, 0.7, () => {
+          this._animateTo(saveX, saveY + 3, 180, 0.6, resolve);
         });
         return;
       }
 
-      // Se for gol no meio, desvia um pouco da linha do goleiro
-      // para não parecer que a bola passa "através" dele
       if (result === 'goal' && Math.abs(targetX - 50) < 8) {
         targetX += (Math.random() < 0.5 ? -7 : 7);
       }
 
       this._animateTo(targetX, targetY, duration, scale, () => {
-        if (result === 'goal') {
-          this.el.style.opacity = '0.65';
-        }
+        if (result === 'goal') this.el.style.opacity = '0.65';
         resolve();
       });
     });
