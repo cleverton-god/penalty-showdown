@@ -1,4 +1,6 @@
 :root {
+  --font-display: 'Bebas Neue', 'Orbitron', sans-serif;
+  --font-ui: 'Rajdhani', 'Roboto', system-ui, sans-serif;
   --primary: #00ff88;
   --secondary: #ff3366;
   --accent: #ffd700;
@@ -26,7 +28,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: 'Roboto', system-ui, sans-serif;
+  font-family: 'Rajdhani', 'Roboto', system-ui, sans-serif;
   background: var(--bg-dark);
   color: var(--text);
   user-select: none;
@@ -500,7 +502,7 @@ html, body {
 }
 
 .title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Bebas Neue', 'Orbitron', sans-serif;
   font-size: 2.8rem;
   font-weight: 900;
   line-height: 1.1;
@@ -834,8 +836,9 @@ html, body {
 }
 
 .sb-name {
+  font-family: var(--font-ui);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   max-width: 72px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -843,9 +846,10 @@ html, body {
 }
 
 .sb-score {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-family: 'Bebas Neue', 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: 1px;
   color: var(--accent);
 }
 
@@ -911,9 +915,10 @@ html, body {
 }
 
 .turn-name {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: 'Bebas Neue', 'Orbitron', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 1px;
   color: var(--primary);
   max-width: 140px;
   overflow: hidden;
@@ -1098,25 +1103,28 @@ html, body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 46%;
+  width: 48%;
   aspect-ratio: 1;
-  background: linear-gradient(160deg, #ffdcb0 0%, #e8b888 55%, #d4a070 100%);
+  background: linear-gradient(160deg, #ffe0b8 0%, #f0c090 50%, #d4a070 100%);
   border-radius: 50%;
   border: 2px solid #2a2a2a;
   z-index: 2;
-  box-shadow: inset -2px -2px 5px rgba(0,0,0,0.18);
+  box-shadow:
+    inset -2px -3px 5px rgba(0,0,0,0.2),
+    0 1px 2px rgba(0,0,0,0.25);
 }
 
 .gk-head::after {
   content: '';
   position: absolute;
-  top: 4%;
+  top: 2%;
   left: 50%;
   transform: translateX(-50%);
-  width: 78%;
-  height: 34%;
-  background: linear-gradient(180deg, #1a1a1a, #333);
-  border-radius: 40% 40% 0 0;
+  width: 82%;
+  height: 36%;
+  background: linear-gradient(180deg, #111 0%, #2a2a2a 100%);
+  border-radius: 45% 45% 8% 8%;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.06);
 }
 
 .gk-face {
@@ -1137,15 +1145,17 @@ html, body {
   top: 22%;
   left: 50%;
   transform: translateX(-50%);
-  width: 62%;
+  width: 64%;
   height: 36%;
   background:
-    linear-gradient(90deg, transparent 40%, #c0392b 40%, #c0392b 60%, transparent 60%),
-    linear-gradient(180deg, #ffffff 0%, #ececec 40%, #cfcfcf 100%);
-  border-radius: 8px 8px 5px 5px;
-  border: 2px solid #222;
+    linear-gradient(90deg, transparent 38%, #e74c3c 38%, #e74c3c 62%, transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f2f2f2 35%, #d0d0d0 100%);
+  border-radius: 9px 9px 6px 6px;
+  border: 2px solid #1a1a1a;
   z-index: 1;
-  box-shadow: inset 0 -4px 8px rgba(0,0,0,0.12);
+  box-shadow:
+    inset 0 -4px 8px rgba(0,0,0,0.14),
+    inset 0 2px 0 rgba(255,255,255,0.5);
 }
 
 .gk-badge {
@@ -1197,15 +1207,17 @@ html, body {
 .gk-arm::after {
   content: '';
   position: absolute;
-  bottom: -12%;
+  bottom: -14%;
   left: 50%;
   transform: translateX(-50%);
-  width: 140%;
-  height: 38%;
-  background: linear-gradient(180deg, #ff4d4d, #c0392b);
-  border-radius: 4px 4px 6px 6px;
+  width: 150%;
+  height: 42%;
+  background: linear-gradient(160deg, #ff5a5a 0%, #e74c3c 40%, #c0392b 100%);
+  border-radius: 5px 5px 7px 7px;
   border: 1px solid #7a1f1f;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.3),
+    0 1px 3px rgba(0,0,0,0.35);
 }
 
 .gk-legs {
@@ -1435,7 +1447,7 @@ html, body {
 /* Ball inside goal-area */
 .ball {
   position: absolute;
-  bottom: 2%;
+  bottom: -10%;
   left: 50%;
   width: 10%;
   max-width: 34px;
@@ -1449,38 +1461,50 @@ html, body {
 .ball-inner {
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(circle at 32% 28%, #ffffff 0%, #f0f0f0 35%, #bdbdbd 70%, #8a8a8a 100%);
   border-radius: 50%;
-  border: 2px solid #2a2a2a;
-  box-shadow:
-    inset -3px -3px 6px rgba(0,0,0,0.25),
-    0 2px 6px rgba(0,0,0,0.35);
+  border: 2px solid #1a1a1a;
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255,255,255,0.95) 0%, rgba(245,245,245,0.5) 28%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #f7f7f7 0%, #e8e8e8 45%, #c0c0c0 100%);
+  box-shadow:
+    inset -4px -5px 10px rgba(0,0,0,0.28),
+    inset 3px 3px 6px rgba(255,255,255,0.5),
+    0 3px 8px rgba(0,0,0,0.4);
 }
 
+/* Black pentagon center + panels */
 .ball-inner::before {
   content: '';
   position: absolute;
-  inset: 12%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 50%, transparent 38%, #1a1a1a 39%, #1a1a1a 42%, transparent 43%),
-    conic-gradient(from 0deg, transparent 0 30deg, #1a1a1a 30deg 35deg, transparent 35deg 90deg, #1a1a1a 90deg 95deg, transparent 95deg 150deg, #1a1a1a 150deg 155deg, transparent 155deg 210deg, #1a1a1a 210deg 215deg, transparent 215deg 270deg, #1a1a1a 270deg 275deg, transparent 275deg 330deg, #1a1a1a 330deg 335deg, transparent 335deg 360deg);
-  opacity: 0.55;
+  top: 50%;
+  left: 50%;
+  width: 28%;
+  height: 28%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  box-shadow: 0 0 0 1px #000;
+  z-index: 2;
 }
 
 .ball-inner::after {
   content: '';
   position: absolute;
-  top: 22%;
-  left: 22%;
-  width: 28%;
-  height: 20%;
-  background: rgba(255,255,255,0.45);
+  inset: 0;
   border-radius: 50%;
-  filter: blur(1px);
+  background:
+    /* panel seams */
+    radial-gradient(circle at 50% 18%, transparent 10%, #111 10.5%, #111 12%, transparent 12.5%),
+    radial-gradient(circle at 18% 40%, transparent 9%, #111 9.5%, #111 11%, transparent 11.5%),
+    radial-gradient(circle at 82% 40%, transparent 9%, #111 9.5%, #111 11%, transparent 11.5%),
+    radial-gradient(circle at 30% 78%, transparent 9%, #111 9.5%, #111 11%, transparent 11.5%),
+    radial-gradient(circle at 70% 78%, transparent 9%, #111 9.5%, #111 11%, transparent 11.5%),
+    /* soft highlight */
+    radial-gradient(circle at 32% 30%, rgba(255,255,255,0.55) 0%, transparent 35%);
+  opacity: 0.95;
+  z-index: 1;
 }
 
 .ball-shadow {
@@ -1585,9 +1609,9 @@ html, body {
 }
 
 .result-msg .rm-text {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.1rem;
-  font-weight: 900;
+  font-family: 'Bebas Neue', 'Orbitron', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 400;
   letter-spacing: 3px;
   text-shadow: 0 2px 14px rgba(0,0,0,0.75);
 }

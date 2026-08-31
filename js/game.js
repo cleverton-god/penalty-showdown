@@ -269,8 +269,8 @@ export class Game {
 
     // 2) Resolve resultado ANTES da animação
     let result;
-    const missChance = power > 94 ? 0.12 : (power < 15 ? 0.14 : 0.03);
-    const cornerBonus = [0, 2, 6, 8].includes(zone) ? 0.03 : 0;
+    const missChance = power > 96 ? 0.10 : (power < 12 ? 0.12 : 0.02);
+    const cornerBonus = [0, 2, 6, 8].includes(zone) ? 0.02 : 0;
     if (Math.random() < missChance + cornerBonus) {
       result = 'miss';
     } else if (this.gk.isSave(zone, power, dive)) {

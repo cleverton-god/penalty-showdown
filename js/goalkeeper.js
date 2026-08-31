@@ -26,7 +26,8 @@ export class Goalkeeper {
   }
 
   chooseDive(shotZone) {
-    const readChance = 0.62;
+    // Lê o chute com frequência alta
+    const readChance = 0.72;
     const side = ZONE_SIDE[shotZone] || 'center';
     const height = ZONE_HEIGHT[shotZone] || 'mid';
 
@@ -62,7 +63,6 @@ export class Goalkeeper {
     if (!this.el) return;
     const d = Math.max(280, Math.min(520, ms));
     this.el.style.transitionDuration = `${d}ms, ${d}ms, ${d}ms, 0.3s, 0.3s`;
-    // arms/legs inherit via CSS; boost body limbs
     this.el.querySelectorAll('.gk-arm, .gk-leg').forEach(n => {
       n.style.transitionDuration = `${Math.round(d * 0.85)}ms`;
     });
@@ -82,7 +82,6 @@ export class Goalkeeper {
     } else if (state === 'stay' || state === 'center') {
       this.el.classList.add('dive-stay');
     } else if (state === 'save') {
-      // Só a pose de defesa — um único destino, mãos na zona
       const z = shotZone != null ? shotZone : 4;
       this.el.classList.add('save-pose', 'save-z' + z);
       this.currentDir = ZONE_SIDE[z] === 'center'
@@ -103,7 +102,6 @@ export class Goalkeeper {
     if (this.el) {
       this._setMoveDuration(450);
       this._clearPose();
-      // clear inline duration after return
       setTimeout(() => {
         if (!this.el) return;
         this.el.style.transitionDuration = '';
@@ -124,47 +122,49 @@ export class Goalkeeper {
     if (diveDir === 'left') diveSide = 'left';
     else if (diveDir === 'right') diveSide = 'right';
 
+    // Lado oposto — ainda raro, mas não impossível
     if (
       (shotSide === 'left' && diveSide === 'right') ||
       (shotSide === 'right' && diveSide === 'left')
     ) {
-      return Math.random() < 0.06;
-    }
-
-    if (shotSide === 'center' && diveSide !== 'center') {
       return Math.random() < 0.10;
     }
 
+    if (shotSide === 'center' && diveSide !== 'center') {
+      return Math.random() < 0.16;
+    }
+
     if (diveSide === 'center' && shotSide !== 'center') {
-      return Math.random() < 0.14;
+      return Math.random() < 0.22;
     }
 
     let saveChance;
 
     if (shotSide === 'center') {
       if (shotHeight === 'high') {
-        saveChance = (diveDir === 'up') ? 0.62 : 0.28;
+        saveChance = (diveDir === 'up') ? 0.74 : 0.38;
       } else if (shotHeight === 'low') {
-        saveChance = (diveDir === 'stay' || diveDir === 'center') ? 0.58 : 0.32;
+        saveChance = (diveDir === 'stay' || diveDir === 'center') ? 0.70 : 0.42;
       } else {
-        if (diveDir === 'stay' || diveDir === 'center') saveChance = 0.55;
-        else if (diveDir === 'up') saveChance = 0.50;
-        else saveChance = 0.12;
+        if (diveDir === 'stay' || diveDir === 'center') saveChance = 0.68;
+        else if (diveDir === 'up') saveChance = 0.62;
+        else saveChance = 0.18;
       }
-      if (power >= 50 && power <= 78) saveChance -= 0.08;
-      if (power > 90) saveChance += 0.06;
-      if (power < 30) saveChance += 0.12;
+      if (power >= 50 && power <= 78) saveChance -= 0.05;
+      if (power > 90) saveChance += 0.04;
+      if (power < 30) saveChance += 0.10;
     } else {
-      saveChance = 0.72;
-      if (shotHeight === 'high') saveChance -= 0.06;
-      if (shotHeight === 'low') saveChance += 0.04;
-      if (isCorner) saveChance -= 0.08;
-      if (power >= 48 && power <= 72) saveChance -= 0.06;
-      if (power > 90) saveChance += 0.05;
-      if (power < 28) saveChance += 0.10;
+      // Lado correto — defende bastante
+      saveChance = 0.80;
+      if (shotHeight === 'high') saveChance -= 0.04;
+      if (shotHeight === 'low') saveChance += 0.03;
+      if (isCorner) saveChance -= 0.06;
+      if (power >= 48 && power <= 72) saveChance -= 0.04;
+      if (power > 90) saveChance += 0.03;
+      if (power < 28) saveChance += 0.08;
     }
 
-    saveChance = Math.max(0.08, Math.min(0.88, saveChance));
+    saveChance = Math.max(0.12, Math.min(0.90, saveChance));
     return Math.random() < saveChance;
   }
 }
