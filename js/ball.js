@@ -13,7 +13,7 @@ export class Ball {
     if (!this.el) return;
     this.el.style.transition = 'none';
     this.el.style.left = '50%';
-    this.el.style.bottom = '-10%';
+    this.el.style.bottom = '-22%';
     this.el.style.top = 'auto';
     this.el.style.transform = 'translateX(-50%) scale(1)';
     this.el.style.opacity = '1';

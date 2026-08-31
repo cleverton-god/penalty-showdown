@@ -972,7 +972,7 @@ html, body {
 
 .goal {
   position: absolute;
-  bottom: 18%;
+  bottom: 12%;
   left: 50%;
   transform: translateX(-50%);
   width: 88%;
@@ -1064,7 +1064,7 @@ html, body {
 /* Goalkeeper */
 .goalkeeper {
   position: absolute;
-  bottom: 20%;
+  bottom: 8%;
   left: 50%;
   width: 16%;
   max-width: 64px;
@@ -1447,7 +1447,7 @@ html, body {
 /* Ball inside goal-area */
 .ball {
   position: absolute;
-  bottom: -10%;
+  bottom: -22%;
   left: 50%;
   width: 10%;
   max-width: 34px;
