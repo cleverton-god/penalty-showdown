@@ -1,19 +1,19 @@
-import { Player } from './player.js';
-import { Goalkeeper } from './goalkeeper.js';
-import { Ball } from './ball.js';
-import { UI } from './ui.js';
-import { AudioManager } from './audio.js';
-import { StorageManager } from './storage.js';
+import { Player } from "./player.js";
+import { Goalkeeper } from "./goalkeeper.js";
+import { Ball } from "./ball.js";
+import { UI } from "./ui.js";
+import { AudioManager } from "./audio.js";
+import { StorageManager } from "./storage.js";
 
 const STATES = {
-  MENU: 'MENU',
-  INTRO: 'INTRO',
-  PLAYER1_TURN: 'PLAYER1_TURN',
-  PLAYER2_TURN: 'PLAYER2_TURN',
-  SHOOTING: 'SHOOTING',
-  RESULT: 'RESULT',
-  SUDDEN_DEATH: 'SUDDEN_DEATH',
-  GAME_OVER: 'GAME_OVER'
+  MENU: "MENU",
+  INTRO: "INTRO",
+  PLAYER1_TURN: "PLAYER1_TURN",
+  PLAYER2_TURN: "PLAYER2_TURN",
+  SHOOTING: "SHOOTING",
+  RESULT: "RESULT",
+  SUDDEN_DEATH: "SUDDEN_DEATH",
+  GAME_OVER: "GAME_OVER",
 };
 
 export class Game {
@@ -35,34 +35,38 @@ export class Game {
     this.powerInterval = null;
     this.aimDragging = false;
     this.canShoot = false;
-    this.stadium = 'night';
-    this.p1Color = '#e74c3c';
-    this.p2Color = '#3498db';
+    this.stadium = "night";
+    this.p1Color = "#e74c3c";
+    this.p2Color = "#3498db";
   }
 
   init() {
     this.audio.init();
     this.ui.buildCrowd();
-    this.ball.setElement(document.getElementById('ball'));
-    this.gk.setElement(document.getElementById('goalkeeper'));
+    this.ball.setElement(document.getElementById("ball"));
+    this.gk.setElement(document.getElementById("goalkeeper"));
     this._buildZones();
     this._bindEvents();
-    this.ui.showScreen('menu');
+    this.ui.showScreen("menu");
     this._startPowerOscillation();
   }
 
   _buildZones() {
-    const container = document.getElementById('goal-zones');
-    container.innerHTML = '';
+    const container = document.getElementById("goal-zones");
+    container.innerHTML = "";
     for (let i = 0; i < 9; i++) {
-      const z = document.createElement('div');
-      z.className = 'zone';
+      const z = document.createElement("div");
+      z.className = "zone";
       z.dataset.zone = i;
-      z.addEventListener('click', () => this._selectZone(i));
-      z.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        this._selectZone(i);
-      }, { passive: false });
+      z.addEventListener("click", () => this._selectZone(i));
+      z.addEventListener(
+        "touchstart",
+        (e) => {
+          e.preventDefault();
+          this._selectZone(i);
+        },
+        { passive: false },
+      );
       container.appendChild(z);
     }
     this._highlightZone(4);
@@ -70,46 +74,65 @@ export class Game {
 
   _bindEvents() {
     // Menu
-    document.getElementById('btn-start').addEventListener('click', () => this.startMatch());
-    document.getElementById('btn-history').addEventListener('click', () => this.showHistory());
-    document.getElementById('btn-back-menu').addEventListener('click', () => {
-      this.ui.showScreen('menu');
+    document
+      .getElementById("btn-start")
+      .addEventListener("click", () => this.startMatch());
+    document
+      .getElementById("btn-history")
+      .addEventListener("click", () => this.showHistory());
+    document.getElementById("btn-back-menu").addEventListener("click", () => {
+      this.ui.showScreen("menu");
     });
-    document.getElementById('btn-clear-history').addEventListener('click', () => {
-      StorageManager.clear();
-      this.ui.renderHistory([]);
-    });
-    document.getElementById('btn-sound').addEventListener('click', () => {
+    document
+      .getElementById("btn-clear-history")
+      .addEventListener("click", () => {
+        StorageManager.clear();
+        this.ui.renderHistory([]);
+      });
+    document.getElementById("btn-sound").addEventListener("click", () => {
       const on = this.audio.toggle();
-      document.getElementById('btn-sound').textContent = on ? '🔊' : '🔇';
+      document.getElementById("btn-sound").textContent = on ? "🔊" : "🔇";
     });
 
     // Color pickers
-    document.querySelectorAll('#screen-menu .input-group').forEach((group, idx) => {
-      group.querySelectorAll('.color-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          group.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          if (idx === 0) this.p1Color = btn.dataset.color;
-          else this.p2Color = btn.dataset.color;
+    document
+      .querySelectorAll("#screen-menu .input-group")
+      .forEach((group, idx) => {
+        group.querySelectorAll(".color-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            group
+              .querySelectorAll(".color-btn")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            if (idx === 0) this.p1Color = btn.dataset.color;
+            else this.p2Color = btn.dataset.color;
+          });
         });
       });
-    });
 
     // End buttons
-    document.getElementById('btn-replay').addEventListener('click', () => this.replay());
-    document.getElementById('btn-new').addEventListener('click', () => {
-      this.ui.showScreen('menu');
+    document
+      .getElementById("btn-replay")
+      .addEventListener("click", () => this.replay());
+    document.getElementById("btn-new").addEventListener("click", () => {
+      this.ui.showScreen("menu");
       this.state = STATES.MENU;
     });
 
     // Shoot
-    document.getElementById('btn-shoot').addEventListener('click', () => this.shoot());
+    document
+      .getElementById("btn-shoot")
+      .addEventListener("click", () => this.shoot());
 
     // Keyboard
-    document.addEventListener('keydown', (e) => {
-      if (this.state !== STATES.PLAYER1_TURN && this.state !== STATES.PLAYER2_TURN && this.state !== STATES.SUDDEN_DEATH) return;
-      if (e.code === 'Space' || e.code === 'Enter') {
+    document.addEventListener("keydown", (e) => {
+      if (
+        this.state !== STATES.PLAYER1_TURN &&
+        this.state !== STATES.PLAYER2_TURN &&
+        this.state !== STATES.SUDDEN_DEATH
+      )
+        return;
+      if (e.code === "Space" || e.code === "Enter") {
         e.preventDefault();
         this.shoot();
       }
@@ -118,22 +141,22 @@ export class Game {
         ArrowLeft: [0, 3, 6],
         ArrowRight: [2, 5, 8],
         ArrowUp: [0, 1, 2],
-        ArrowDown: [6, 7, 8]
+        ArrowDown: [6, 7, 8],
       };
       if (map[e.code]) {
         // Move selection toward that direction
         const curr = this.selectedZone;
         let next = curr;
-        if (e.code === 'ArrowLeft' && curr % 3 > 0) next = curr - 1;
-        if (e.code === 'ArrowRight' && curr % 3 < 2) next = curr + 1;
-        if (e.code === 'ArrowUp' && curr >= 3) next = curr - 3;
-        if (e.code === 'ArrowDown' && curr <= 5) next = curr + 3;
+        if (e.code === "ArrowLeft" && curr % 3 > 0) next = curr - 1;
+        if (e.code === "ArrowRight" && curr % 3 < 2) next = curr + 1;
+        if (e.code === "ArrowUp" && curr >= 3) next = curr - 3;
+        if (e.code === "ArrowDown" && curr <= 5) next = curr + 3;
         this._selectZone(next);
       }
     });
 
     // Click/touch on goal selects nearest zone
-    const goal = document.querySelector('.goal');
+    const goal = document.querySelector(".goal");
     const pickZone = (clientX, clientY) => {
       const rect = goal.getBoundingClientRect();
       const x = (clientX - rect.left) / rect.width;
@@ -142,33 +165,38 @@ export class Game {
       const row = Math.min(2, Math.max(0, Math.floor(y * 3)));
       this._selectZone(row * 3 + col);
     };
-    goal.addEventListener('click', (e) => pickZone(e.clientX, e.clientY));
-    goal.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      const t = e.touches[0];
-      pickZone(t.clientX, t.clientY);
-    }, { passive: false });
+    goal.addEventListener("click", (e) => pickZone(e.clientX, e.clientY));
+    goal.addEventListener(
+      "touchstart",
+      (e) => {
+        e.preventDefault();
+        const t = e.touches[0];
+        pickZone(t.clientX, t.clientY);
+      },
+      { passive: false },
+    );
 
     // Stadium select
-    document.getElementById('stadium').addEventListener('change', (e) => {
+    document.getElementById("stadium").addEventListener("change", (e) => {
       this.stadium = e.target.value;
       this.ui.setStadium(this.stadium);
     });
 
     // Init audio on first interaction
-    document.body.addEventListener('click', () => this.audio.init(), { once: true });
+    document.body.addEventListener("click", () => this.audio.init(), {
+      once: true,
+    });
   }
-
 
   _selectZone(z) {
     this.selectedZone = z;
     this._highlightZone(z);
-    this.audio.play('click');
+    this.audio.play("click");
   }
 
   _highlightZone(z) {
-    document.querySelectorAll('.zone').forEach((el, i) => {
-      el.classList.toggle('active', i === z);
+    document.querySelectorAll(".zone").forEach((el, i) => {
+      el.classList.toggle("active", i === z);
     });
   }
 
@@ -177,18 +205,26 @@ export class Game {
     this.powerInterval = setInterval(() => {
       if (!this.canShoot) return;
       this.power += this.powerDirection * 2.2;
-      if (this.power >= 100) { this.power = 100; this.powerDirection = -1; }
-      if (this.power <= 5) { this.power = 5; this.powerDirection = 1; }
+      if (this.power >= 100) {
+        this.power = 100;
+        this.powerDirection = -1;
+      }
+      if (this.power <= 5) {
+        this.power = 5;
+        this.powerDirection = 1;
+      }
       this.ui.setPower(this.power);
     }, 30);
   }
 
   startMatch() {
-    const n1 = document.getElementById('player1-name').value.trim() || 'Jogador 1';
-    const n2 = document.getElementById('player2-name').value.trim() || 'Jogador 2';
+    const n1 =
+      document.getElementById("player1-name").value.trim() || "Jogador 1";
+    const n2 =
+      document.getElementById("player2-name").value.trim() || "Jogador 2";
     if (!n1 || !n2) return;
 
-    this.stadium = document.getElementById('stadium').value;
+    this.stadium = document.getElementById("stadium").value;
     this.ui.setStadium(this.stadium);
     this.p1 = new Player(n1, this.p1Color, 1);
     this.p2 = new Player(n2, this.p2Color, 2);
@@ -196,33 +232,33 @@ export class Game {
     this.suddenRound = 0;
     this.currentRound = 1;
 
-    this.audio.play('whistle');
+    this.audio.play("whistle");
     this._showIntro();
   }
 
   _showIntro() {
     this.state = STATES.INTRO;
-    this.ui.showScreen('intro');
-    document.getElementById('intro-name1').textContent = this.p1.name;
-    document.getElementById('intro-name2').textContent = this.p2.name;
-    document.getElementById('intro-color1').style.background = this.p1.color;
-    document.getElementById('intro-color2').style.background = this.p2.color;
+    this.ui.showScreen("intro");
+    document.getElementById("intro-name1").textContent = this.p1.name;
+    document.getElementById("intro-name2").textContent = this.p2.name;
+    document.getElementById("intro-color1").style.background = this.p1.color;
+    document.getElementById("intro-color2").style.background = this.p2.color;
 
-    const cd = document.getElementById('countdown');
-    cd.classList.remove('hidden');
+    const cd = document.getElementById("countdown");
+    cd.classList.remove("hidden");
     let count = 3;
     cd.textContent = count;
-    this.audio.play('countdown');
+    this.audio.play("countdown");
 
     const timer = setInterval(() => {
       count--;
       if (count > 0) {
         cd.textContent = count;
-        this.audio.play('countdown');
+        this.audio.play("countdown");
       } else {
         clearInterval(timer);
-        cd.textContent = 'VAI!';
-        this.audio.play('whistle');
+        cd.textContent = "VAI!";
+        this.audio.play("whistle");
         setTimeout(() => this._startPlayer1(), 600);
       }
     }, 900);
@@ -232,7 +268,7 @@ export class Game {
     this.state = STATES.PLAYER1_TURN;
     this.currentPlayer = this.p1;
     this.currentRound = 1;
-    this.ui.showScreen('game');
+    this.ui.showScreen("game");
     this.ui.updateScoreboard(this.p1, this.p2);
     this.ui.updateTurn(this.p1, 1, 5);
     this.ui.hideResult();
@@ -254,7 +290,12 @@ export class Game {
   }
 
   async shoot() {
-    if (!this.canShoot || this.state === STATES.SHOOTING || this.state === STATES.RESULT) return;
+    if (
+      !this.canShoot ||
+      this.state === STATES.SHOOTING ||
+      this.state === STATES.RESULT
+    )
+      return;
     this.canShoot = false;
     this.ui.enableShoot(false);
     this.state = STATES.SHOOTING;
@@ -262,28 +303,48 @@ export class Game {
 
     const zone = this.selectedZone;
     const power = this.power;
-    this.audio.play('kick');
+    this.audio.play("kick");
 
     // 1) Escolhe mergulho "natural" do goleiro
     let dive = this.gk.chooseDive(zone);
 
     // 2) Resolve resultado ANTES da animação
     let result;
-    const missChance = power > 96 ? 0.10 : (power < 12 ? 0.12 : 0.02);
+    const missChance = power > 96 ? 0.1 : power < 12 ? 0.12 : 0.02;
     const cornerBonus = [0, 2, 6, 8].includes(zone) ? 0.02 : 0;
     if (Math.random() < missChance + cornerBonus) {
-      result = 'miss';
+      result = "miss";
     } else if (this.gk.isSave(zone, power, dive)) {
-      result = 'save';
+      result = "save";
       // Na defesa, vai direto à zona da bola (sem corrigir depois)
-      const side = { 0:'left',1:'center',2:'right',3:'left',4:'center',5:'right',6:'left',7:'center',8:'right' }[zone];
-      const height = { 0:'high',1:'high',2:'high',3:'mid',4:'mid',5:'mid',6:'low',7:'low',8:'low' }[zone];
-      if (side === 'left') dive = 'left';
-      else if (side === 'right') dive = 'right';
-      else dive = height === 'high' ? 'up' : 'stay';
+      const side = {
+        0: "left",
+        1: "center",
+        2: "right",
+        3: "left",
+        4: "center",
+        5: "right",
+        6: "left",
+        7: "center",
+        8: "right",
+      }[zone];
+      const height = {
+        0: "high",
+        1: "high",
+        2: "high",
+        3: "mid",
+        4: "mid",
+        5: "mid",
+        6: "low",
+        7: "low",
+        8: "low",
+      }[zone];
+      if (side === "left") dive = "left";
+      else if (side === "right") dive = "right";
+      else dive = height === "high" ? "up" : "stay";
       this.gk.currentDir = dive;
     } else {
-      result = 'goal';
+      result = "goal";
     }
 
     const flightMs = Math.max(400, 700 - power * 2.8);
@@ -291,8 +352,8 @@ export class Game {
     const gkDelay = Math.round(flightMs * 0.12);
     const gkMove = Math.round(flightMs * 0.78);
     setTimeout(() => {
-      if (result === 'save') {
-        this.gk.animate('save', zone, gkMove);
+      if (result === "save") {
+        this.gk.animate("save", zone, gkMove);
       } else {
         this.gk.animate(dive, null, gkMove);
       }
@@ -304,23 +365,26 @@ export class Game {
     this.state = STATES.RESULT;
     this.ui.zoomPitch(false);
 
-    if (result === 'goal') {
-      this.currentPlayer.addShot('goal');
-      this.audio.play('goal');
-      this.ui.showResult('goal');
+    if (result === "goal") {
+      this.currentPlayer.addShot("goal");
+      this.audio.play("goal");
+      this.ui.showResult("goal");
       this.ui.spawnConfetti(28);
-      this.gk.animate('sad');
-      document.querySelector('.goal')?.classList.add('scored');
-      setTimeout(() => document.querySelector('.goal')?.classList.remove('scored'), 800);
-    } else if (result === 'save') {
-      this.currentPlayer.addShot('save');
-      this.audio.play('save');
-      this.ui.showResult('save');
+      this.gk.animate("sad");
+      document.querySelector(".goal")?.classList.add("scored");
+      setTimeout(
+        () => document.querySelector(".goal")?.classList.remove("scored"),
+        800,
+      );
+    } else if (result === "save") {
+      this.currentPlayer.addShot("save");
+      this.audio.play("save");
+      this.ui.showResult("save");
       // Pose de defesa já foi aplicada durante o voo da bola
     } else {
-      this.currentPlayer.addShot('miss');
-      this.audio.play('miss');
-      this.ui.showResult('miss');
+      this.currentPlayer.addShot("miss");
+      this.audio.play("miss");
+      this.ui.showResult("miss");
     }
 
     this.ui.updateScoreboard(this.p1, this.p2, this.suddenDeath);
@@ -347,8 +411,10 @@ export class Game {
         this._prepareShot(STATES.PLAYER1_TURN);
       } else {
         // Switch to player 2
-        this.ui.showTransition(`FIM DAS COBRANÇAS DE ${this.p1.name}\n\nAGORA É A VEZ DE ${this.p2.name}`);
-        this.audio.play('whistle');
+        this.ui.showTransition(
+          `FIM DAS COBRANÇAS DE ${this.p1.name}\n\nAGORA É A VEZ DE ${this.p2.name}`,
+        );
+        this.audio.play("whistle");
         setTimeout(() => {
           this.ui.hideTransition();
           this.currentPlayer = this.p2;
@@ -386,20 +452,20 @@ export class Game {
     this.suddenDeath = true;
     this.suddenRound = 1;
     this.state = STATES.SUDDEN_DEATH;
-    this.ui.showScreen('sudden');
-    this.audio.play('whistle');
+    this.ui.showScreen("sudden");
+    this.audio.play("whistle");
 
-    const cd = document.getElementById('sudden-count');
+    const cd = document.getElementById("sudden-count");
     let c = 3;
     cd.textContent = c;
     const t = setInterval(() => {
       c--;
       if (c > 0) {
         cd.textContent = c;
-        this.audio.play('countdown');
+        this.audio.play("countdown");
       } else {
         clearInterval(t);
-        this.ui.showScreen('game');
+        this.ui.showScreen("game");
         this.currentPlayer = this.p1;
         this.ui.updateTurn(this.p1, this.suddenRound, 1, true);
         this.ui.updateScoreboard(this.p1, this.p2, true);
@@ -424,11 +490,11 @@ export class Game {
       const p1Last = this.p1.shots[this.p1.shots.length - 1];
       const p2Last = this.p2.shots[this.p2.shots.length - 1];
 
-      if (p1Last === 'goal' && p2Last !== 'goal') {
+      if (p1Last === "goal" && p2Last !== "goal") {
         this._endGame(this.p1);
         return;
       }
-      if (p2Last === 'goal' && p1Last !== 'goal') {
+      if (p2Last === "goal" && p1Last !== "goal") {
         this._endGame(this.p2);
         return;
       }
@@ -446,10 +512,10 @@ export class Game {
 
   _endGame(winner) {
     this.state = STATES.GAME_OVER;
-    this.audio.play('victory');
+    this.audio.play("victory");
     this.ui.spawnConfetti(60);
     this.ui.showEnd(winner, this.p1, this.p2, this.suddenRound);
-    this.ui.showScreen('end');
+    this.ui.showScreen("end");
 
     // Save history
     StorageManager.saveMatch({
@@ -459,7 +525,7 @@ export class Game {
       p2Goals: this.p2.goals,
       winner: winner.name,
       sudden: this.suddenDeath,
-      totalShots: this.p1.shots.length + this.p2.shots.length
+      totalShots: this.p1.shots.length + this.p2.shots.length,
     });
   }
 
@@ -476,6 +542,6 @@ export class Game {
   showHistory() {
     const list = StorageManager.getHistory();
     this.ui.renderHistory(list);
-    this.ui.showScreen('history');
+    this.ui.showScreen("history");
   }
 }

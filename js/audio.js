@@ -24,19 +24,39 @@ export class AudioManager {
   play(type) {
     if (!this.enabled || !this.ctx) return;
     try {
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      if (this.ctx.state === "suspended") this.ctx.resume();
       switch (type) {
-        case 'kick': this._kick(); break;
-        case 'goal': this._goal(); break;
-        case 'save': this._save(); break;
-        case 'miss': this._miss(); break;
-        case 'whistle': this._whistle(); break;
-        case 'countdown': this._beep(440); break;
-        case 'victory': this._victory(); break;
-        case 'crowd': this._crowd(); break;
-        case 'click': this._click(); break;
+        case "kick":
+          this._kick();
+          break;
+        case "goal":
+          this._goal();
+          break;
+        case "save":
+          this._save();
+          break;
+        case "miss":
+          this._miss();
+          break;
+        case "whistle":
+          this._whistle();
+          break;
+        case "countdown":
+          this._beep(440);
+          break;
+        case "victory":
+          this._victory();
+          break;
+        case "crowd":
+          this._crowd();
+          break;
+        case "click":
+          this._click();
+          break;
       }
-    } catch (e) { /* silent */ }
+    } catch (e) {
+      /* silent */
+    }
   }
 
   _osc(freq, type, duration, gain = 0.15, detune = 0) {
@@ -54,39 +74,39 @@ export class AudioManager {
   }
 
   _kick() {
-    this._osc(80, 'sine', 0.15, 0.3);
-    this._osc(120, 'triangle', 0.1, 0.15);
+    this._osc(80, "sine", 0.15, 0.3);
+    this._osc(120, "triangle", 0.1, 0.15);
   }
 
   _goal() {
     [523, 659, 784, 1047].forEach((f, i) => {
-      setTimeout(() => this._osc(f, 'square', 0.2, 0.12), i * 80);
+      setTimeout(() => this._osc(f, "square", 0.2, 0.12), i * 80);
     });
     this._crowd();
   }
 
   _save() {
-    this._osc(200, 'sawtooth', 0.2, 0.15);
-    this._osc(150, 'triangle', 0.25, 0.1);
+    this._osc(200, "sawtooth", 0.2, 0.15);
+    this._osc(150, "triangle", 0.25, 0.1);
   }
 
   _miss() {
-    this._osc(180, 'sawtooth', 0.3, 0.12);
-    setTimeout(() => this._osc(100, 'sine', 0.4, 0.1), 100);
+    this._osc(180, "sawtooth", 0.3, 0.12);
+    setTimeout(() => this._osc(100, "sine", 0.4, 0.1), 100);
   }
 
   _whistle() {
-    this._osc(1200, 'sine', 0.4, 0.1);
-    setTimeout(() => this._osc(1400, 'sine', 0.3, 0.08), 150);
+    this._osc(1200, "sine", 0.4, 0.1);
+    setTimeout(() => this._osc(1400, "sine", 0.3, 0.08), 150);
   }
 
   _beep(freq) {
-    this._osc(freq, 'sine', 0.15, 0.12);
+    this._osc(freq, "sine", 0.15, 0.12);
   }
 
   _victory() {
     [523, 659, 784, 1047, 1319].forEach((f, i) => {
-      setTimeout(() => this._osc(f, 'square', 0.25, 0.1), i * 120);
+      setTimeout(() => this._osc(f, "square", 0.25, 0.1), i * 120);
     });
   }
 
@@ -94,12 +114,12 @@ export class AudioManager {
     // Simple noise-like cheer
     for (let i = 0; i < 6; i++) {
       setTimeout(() => {
-        this._osc(200 + Math.random() * 400, 'sawtooth', 0.3, 0.03);
+        this._osc(200 + Math.random() * 400, "sawtooth", 0.3, 0.03);
       }, i * 50);
     }
   }
 
   _click() {
-    this._osc(800, 'sine', 0.05, 0.08);
+    this._osc(800, "sine", 0.05, 0.08);
   }
 }

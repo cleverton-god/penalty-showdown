@@ -1,7 +1,7 @@
 export class Player {
   constructor(name, color, id) {
     this.name = name || `Jogador ${id}`;
-    this.color = color || (id === 1 ? '#e74c3c' : '#3498db');
+    this.color = color || (id === 1 ? "#e74c3c" : "#3498db");
     this.id = id;
     this.goals = 0;
     this.shots = []; // 'goal' | 'save' | 'miss'
@@ -11,8 +11,8 @@ export class Player {
 
   addShot(result) {
     this.shots.push(result);
-    if (result === 'goal') this.goals++;
-    else if (result === 'miss') this.misses++;
+    if (result === "goal") this.goals++;
+    else if (result === "miss") this.misses++;
   }
 
   reset() {

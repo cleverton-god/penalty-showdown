@@ -1,5 +1,5 @@
 // StorageManager - localStorage history
-const KEY = 'penalty_showdown_history';
+const KEY = "penalty_showdown_history";
 
 export class StorageManager {
   static getHistory() {
@@ -16,17 +16,21 @@ export class StorageManager {
       const history = this.getHistory();
       history.unshift({
         ...match,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
       });
       // Keep last 20
       if (history.length > 20) history.length = 20;
       localStorage.setItem(KEY, JSON.stringify(history));
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   static clear() {
     try {
       localStorage.removeItem(KEY);
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 }
