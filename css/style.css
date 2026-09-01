@@ -1064,15 +1064,21 @@ html, body {
 /* Goalkeeper */
 .goalkeeper {
   position: absolute;
+
   bottom: 8%;
   left: 50%;
-  width: 16%;
-  max-width: 64px;
+
+  width: 19%;
+  max-width: 76px;
   min-width: 42px;
+
   aspect-ratio: 5 / 9;
+
   z-index: 5;
+
   transform: translateX(-50%);
   transform-origin: center bottom;
+
   transition:
     left 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
     bottom 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
