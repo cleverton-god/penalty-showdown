@@ -28,7 +28,6 @@
   --glow: 0 0 20px rgba(0, 255, 136, 0.4);
 }
 
-
 /* =========================================================
    RESET
    ========================================================= */
@@ -39,7 +38,6 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
-
 
 /* =========================================================
    HTML / BODY
@@ -59,7 +57,6 @@ body {
   user-select: none;
 }
 
-
 /* =========================================================
    APLICAÇÃO
    ========================================================= */
@@ -71,7 +68,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 
 /* =========================================================
    FUNDO DO ESTÁDIO
@@ -89,21 +85,18 @@ body {
   transition: background 0.8s ease;
 }
 
-
 /* Fundo noturno */
 
 .stadium-bg.night {
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.50) 0%,
+      rgba(0, 0, 0, 0.5) 0%,
       rgba(0, 0, 0, 0.55) 40%,
       rgba(0, 0, 0, 0.65) 100%
     ),
-    url("../assets/images/stadium-bg.jpg")
-      center center / cover no-repeat;
+    url("../assets/images/stadium-bg.jpg") center center / cover no-repeat;
 }
-
 
 /* Fundo diurno */
 
@@ -112,11 +105,10 @@ body {
     linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.35) 0%,
-      rgba(0, 0, 0, 0.30) 35%,
+      rgba(0, 0, 0, 0.3) 35%,
       rgba(0, 0, 0, 0.45) 100%
     ),
-    url("../assets/images/stadium-bg.jpg")
-      center center / cover no-repeat;
+    url("../assets/images/stadium-bg.jpg") center center / cover no-repeat;
 }
 
 /* =========================================================
@@ -136,7 +128,6 @@ body {
 
   z-index: 5;
 }
-
 
 /* =========================================================
    TELAS
@@ -166,7 +157,6 @@ body {
   opacity: 1;
 }
 
-
 /* =========================================================
    MENU
    ========================================================= */
@@ -179,12 +169,11 @@ body {
 
   text-align: center;
 
-  background:
-    linear-gradient(
-      160deg,
-      rgba(16, 24, 48, 0.92),
-      rgba(8, 14, 28, 0.95)
-    );
+  background: linear-gradient(
+    160deg,
+    rgba(16, 24, 48, 0.92),
+    rgba(8, 14, 28, 0.95)
+  );
 
   backdrop-filter: blur(20px);
 
@@ -199,7 +188,6 @@ body {
   animation: menuEnter 0.8s ease-out;
 }
 
-
 /* Título principal */
 
 .title {
@@ -210,12 +198,7 @@ body {
 
   line-height: 1.1;
 
-  background: linear-gradient(
-    135deg,
-    #00ff88,
-    #00ccff,
-    #ff3366
-  );
+  background: linear-gradient(135deg, #00ff88, #00ccff, #ff3366);
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -224,7 +207,6 @@ body {
   margin-bottom: 8px;
   letter-spacing: 2px;
 }
-
 
 .subtitle {
   color: var(--text-dim);
@@ -235,7 +217,6 @@ body {
 
   letter-spacing: 1px;
 }
-
 
 /* =========================================================
    INPUTS
@@ -292,10 +273,8 @@ body {
 .input-group input:focus {
   border-color: var(--primary);
 
-  box-shadow:
-    0 0 0 3px rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.2);
 }
-
 
 /* =========================================================
    SELETOR DE CORES
@@ -336,10 +315,8 @@ body {
 .color-btn.active {
   border-color: #fff;
 
-  box-shadow:
-    0 0 8px currentColor;
+  box-shadow: 0 0 8px currentColor;
 }
-
 
 /* =========================================================
    OPÇÕES
@@ -389,7 +366,6 @@ body {
   cursor: pointer;
 }
 
-
 /* =========================================================
    BOTÕES
    ========================================================= */
@@ -431,7 +407,6 @@ body {
   cursor: not-allowed;
 }
 
-
 /* Botão principal */
 
 .btn.primary {
@@ -439,26 +414,18 @@ body {
 
   margin-bottom: 12px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #00ff88,
-      #00cc6a
-    );
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
 
   color: #0a0e17;
 
-  box-shadow:
-    0 4px 20px rgba(0, 255, 136, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
 }
 
 .btn.primary:hover:not(:disabled) {
-  box-shadow:
-    0 6px 28px rgba(0, 255, 136, 0.6);
+  box-shadow: 0 6px 28px rgba(0, 255, 136, 0.6);
 
   transform: translateY(-2px);
 }
-
 
 /* Botão secundário */
 
@@ -476,20 +443,13 @@ body {
   background: rgba(255, 255, 255, 0.18);
 }
 
-
 /* Botão de perigo */
 
 .btn.danger {
-  background:
-    linear-gradient(
-      135deg,
-      #ff3366,
-      #cc2255
-    );
+  background: linear-gradient(135deg, #ff3366, #cc2255);
 
   color: #fff;
 }
-
 
 /* Botão de chute */
 
@@ -500,13 +460,7 @@ body {
 
   padding: 14px 36px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ffe566 0%,
-      #ffd700 40%,
-      #f5a623 100%
-    );
+  background: linear-gradient(135deg, #ffe566 0%, #ffd700 40%, #f5a623 100%);
 
   color: #0a0e17;
 
@@ -516,13 +470,11 @@ body {
     0 4px 22px rgba(255, 215, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn.shoot:hover:not(:disabled) {
-  box-shadow:
-    0 6px 28px rgba(255, 215, 0, 0.65);
+  box-shadow: 0 6px 28px rgba(255, 215, 0, 0.65);
 
   transform: translateY(-1px);
 }
@@ -531,7 +483,6 @@ body {
   opacity: 0.45;
   transform: none;
 }
-
 
 /* Botão de ícone */
 
@@ -556,7 +507,6 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-
 /* Controle de som */
 
 .sound-toggle {
@@ -565,7 +515,6 @@ body {
 
   margin-top: 16px;
 }
-
 
 /* =========================================================
    INTRODUÇÃO
@@ -640,8 +589,7 @@ body {
 
   color: var(--accent);
 
-  text-shadow:
-    0 0 20px rgba(255, 215, 0, 0.5);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 .intro-info {
@@ -660,12 +608,10 @@ body {
 
   color: var(--primary);
 
-  text-shadow:
-    0 0 40px rgba(0, 255, 136, 0.6);
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
 
   animation: pulse 1s ease infinite;
 }
-
 
 /* =========================================================
    TELA DE JOGO
@@ -679,7 +625,6 @@ body {
   justify-content: flex-start !important;
   align-items: stretch !important;
 }
-
 
 /* =========================================================
    HUD
@@ -710,7 +655,6 @@ body {
   isolation: isolate;
 }
 
-
 /* Placar */
 
 .scoreboard {
@@ -731,8 +675,7 @@ body {
 
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 
   z-index: 2;
 
@@ -806,7 +749,6 @@ body {
   color: var(--text-dim);
 }
 
-
 /* Indicadores de chutes */
 
 .sb-shots {
@@ -845,8 +787,7 @@ body {
 
   border-color: #00ff88;
 
-  box-shadow:
-    0 0 8px rgba(0, 255, 136, 0.7);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.7);
 }
 
 .shot-dot.shot-miss {
@@ -854,14 +795,12 @@ body {
 
   border-color: #ff3366;
 
-  box-shadow:
-    0 0 6px rgba(255, 51, 102, 0.5);
+  box-shadow: 0 0 6px rgba(255, 51, 102, 0.5);
 }
 
 .shot-dot.pending {
   background: rgba(255, 255, 255, 0.1);
 }
-
 
 /* Informações do turno */
 
@@ -882,8 +821,7 @@ body {
 
   border: 1px solid rgba(255, 255, 255, 0.18);
 
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .turn-label {
@@ -922,7 +860,6 @@ body {
   margin-top: 2px;
 }
 
-
 /* =========================================================
    CAMPO / ÁREA DO GOL
    ========================================================= */
@@ -952,7 +889,6 @@ body {
   transform: none;
 }
 
-
 /* Área do gol */
 
 .goal-area {
@@ -964,10 +900,7 @@ body {
 
   max-height: 64vh;
 
-  filter:
-    drop-shadow(
-      0 12px 24px rgba(0, 0, 0, 0.35)
-    );
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
 }
 
 .goal-area::after {
@@ -988,7 +921,6 @@ body {
 
   pointer-events: none;
 }
-
 
 /* =========================================================
    GOL
@@ -1012,11 +944,7 @@ body {
   border-radius: 4px 4px 0 0;
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.15) 0%,
-      transparent 40%
-    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, transparent 40%),
     rgba(0, 20, 10, 0.35);
 
   box-shadow:
@@ -1024,7 +952,6 @@ body {
     0 0 30px rgba(255, 255, 255, 0.08),
     0 4px 0 rgba(0, 0, 0, 0.2);
 }
-
 
 /* Rede */
 
@@ -1053,7 +980,6 @@ body {
   pointer-events: none;
 }
 
-
 /* Postes */
 
 .goal-post.left,
@@ -1065,19 +991,11 @@ body {
   width: 8px;
   height: 22px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #9a9a9a,
-      #ffffff 40%,
-      #d0d0d0 70%,
-      #888
-    );
+  background: linear-gradient(90deg, #9a9a9a, #ffffff 40%, #d0d0d0 70%, #888);
 
   border-radius: 2px;
 
-  box-shadow:
-    1px 2px 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .goal-post.left {
@@ -1087,7 +1005,6 @@ body {
 .goal-post.right {
   right: -7px;
 }
-
 
 /* Travessão */
 
@@ -1101,20 +1018,12 @@ body {
 
   height: 6px;
 
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #c8c8c8 60%,
-      #999
-    );
+  background: linear-gradient(180deg, #ffffff, #c8c8c8 60%, #999);
 
   border-radius: 3px;
 
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-
 
 /* =========================================================
    ZONAS DO GOL
@@ -1151,8 +1060,7 @@ body {
 .zone.active {
   background: rgba(0, 255, 136, 0.22);
 
-  box-shadow:
-    inset 0 0 0 2px rgba(0, 255, 136, 0.7);
+  box-shadow: inset 0 0 0 2px rgba(0, 255, 136, 0.7);
 }
 
 .zone.active::after {
@@ -1169,228 +1077,176 @@ body {
 
   font-size: 0.7rem;
 
-  text-shadow:
-    0 0 8px rgba(0, 255, 136, 0.8);
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.8);
 
   pointer-events: none;
 }
 
-
 /* =========================================================
-   GOLEIRO
+   GOLEIRO – VERSÃO MELHORADA
    ========================================================= */
 
 .goalkeeper {
   position: absolute;
-
   left: 50%;
   bottom: 8%;
-
   width: 19%;
-
-  max-width: 76px;
-  min-width: 42px;
-
+  max-width: 78px;
+  min-width: 44px;
   aspect-ratio: 5 / 9;
-
   z-index: 5;
-
   transform: translateX(-50%);
-
   transform-origin: center bottom;
-
   transition:
-    left 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
-    bottom 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
-    transform 0.4s cubic-bezier(0.33, 0.12, 0.2, 1),
+    left 0.38s cubic-bezier(0.22, 0.61, 0.36, 1),
+    bottom 0.38s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1),
     filter 0.3s ease,
     opacity 0.3s ease;
+  will-change: left, bottom, transform;
 }
-
 
 /* Corpo */
 
 .gk-body {
   position: relative;
-
   width: 100%;
   height: 100%;
-
-  filter:
-    drop-shadow(
-      0 4px 6px rgba(0, 0, 0, 0.55)
-    );
-
-  animation:
-    gkIdle 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
+  animation: gkIdle 2.6s ease-in-out infinite;
 }
-
-
-/* Desativa idle durante ações */
 
 .goalkeeper.dive-left .gk-body,
 .goalkeeper.dive-right .gk-body,
 .goalkeeper.dive-up .gk-body,
 .goalkeeper.dive-stay .gk-body,
 .goalkeeper.celebrate .gk-body,
-.goalkeeper.sad .gk-body {
+.goalkeeper.sad .gk-body,
+.goalkeeper.save-pose .gk-body {
   animation: none;
 }
-
 
 /* Cabeça */
 
 .gk-head {
   position: absolute;
-
   top: 0;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 48%;
-
+  width: 46%;
   aspect-ratio: 1;
-
-  background:
-    linear-gradient(
-      160deg,
-      #ffe0b8 0%,
-      #f0c090 50%,
-      #d4a070 100%
-    );
-
+  background: radial-gradient(
+    circle at 35% 30%,
+    #ffe8c8 0%,
+    #f0c090 45%,
+    #d4a070 100%
+  );
   border-radius: 50%;
-
-  border: 2px solid #2a2a2a;
-
+  border: 2px solid #1e1e1e;
   z-index: 2;
-
   box-shadow:
-    inset -2px -3px 5px rgba(0, 0, 0, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.25);
+    inset -3px -4px 6px rgba(0, 0, 0, 0.22),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.25),
+    0 2px 3px rgba(0, 0, 0, 0.3);
 }
+
+/* Cabelo */
 
 .gk-head::after {
   content: "";
-
   position: absolute;
-
-  top: 2%;
+  top: 0;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 82%;
-  height: 36%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #111 0%,
-      #2a2a2a 100%
-    );
-
-  border-radius: 45% 45% 8% 8%;
-
-  box-shadow:
-    inset 0 -2px 0 rgba(255, 255, 255, 0.06);
+  width: 88%;
+  height: 42%;
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 70%, #222 100%);
+  border-radius: 50% 50% 12% 12%;
+  box-shadow: inset 0 -3px 0 rgba(255, 255, 255, 0.05);
 }
 
-
-/* Rosto */
+/* Rosto (boca sutil) */
 
 .gk-face {
   position: absolute;
-
-  bottom: 18%;
+  bottom: 16%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 50%;
-  height: 20%;
-
+  width: 42%;
+  height: 18%;
   background: transparent;
-
-  border-bottom:
-    2px solid rgba(0, 0, 0, 0.15);
-
-  border-radius: 0 0 40% 40%;
-
+  border-bottom: 2.5px solid rgba(0, 0, 0, 0.18);
+  border-radius: 0 0 50% 50%;
   pointer-events: none;
 }
 
+/* Olhos */
 
-/* Tronco */
+.gk-head::before {
+  content: "";
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58%;
+  height: 10%;
+  background:
+    radial-gradient(circle at 22% 50%, #1a1a1a 0 28%, transparent 30%),
+    radial-gradient(circle at 78% 50%, #1a1a1a 0 28%, transparent 30%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Tronco / Camisa */
 
 .gk-torso {
   position: absolute;
-
-  top: 22%;
+  top: 21%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 64%;
-  height: 36%;
-
+  width: 62%;
+  height: 37%;
   background:
     linear-gradient(
       90deg,
-      transparent 38%,
-      #e74c3c 38%,
-      #e74c3c 62%,
-      transparent 62%
+      transparent 36%,
+      #c0392b 36%,
+      #e74c3c 50%,
+      #c0392b 64%,
+      transparent 64%
     ),
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #f2f2f2 35%,
-      #d0d0d0 100%
-    );
-
-  border-radius: 9px 9px 6px 6px;
-
+    linear-gradient(180deg, #ffffff 0%, #f5f5f5 30%, #e0e0e0 70%, #c8c8c8 100%);
+  border-radius: 10px 10px 7px 7px;
   border: 2px solid #1a1a1a;
-
   z-index: 1;
-
   box-shadow:
-    inset 0 -4px 8px rgba(0, 0, 0, 0.14),
-    inset 0 2px 0 rgba(255, 255, 255, 0.5);
+    inset 0 -5px 10px rgba(0, 0, 0, 0.15),
+    inset 0 3px 0 rgba(255, 255, 255, 0.55),
+    0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Emblema */
+/* Emblema / Escudo */
 
 .gk-badge {
   position: absolute;
-
-  top: 18%;
+  top: 16%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 28%;
-  height: 28%;
-
-  background:
-    radial-gradient(
-      circle,
-      #ffd700 30%,
-      #c0392b 32%,
-      #c0392b 100%
-    );
-
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(
+    circle at 40% 35%,
+    #ffe566 0%,
+    #ffd700 35%,
+    #c0392b 38%,
+    #a93226 100%
+  );
   border-radius: 50%;
-
-  border: 1px solid #922;
-
+  border: 1.5px solid #7a1f1f;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.3);
+    0 0 0 1.5px rgba(255, 255, 255, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
-
 
 /* =========================================================
    BRAÇOS
@@ -1398,90 +1254,67 @@ body {
 
 .gk-arms {
   position: absolute;
-
-  top: 24%;
+  top: 23%;
   left: 0;
   right: 0;
-
-  height: 32%;
-
+  height: 34%;
   z-index: 3;
 }
 
 .gk-arm {
   position: absolute;
-
   top: 0;
-
-  width: 24%;
-  height: 92%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff 0%,
-      #e8e8e8 60%,
-      #ccc 100%
-    );
-
-  border-radius: 6px;
-
-  border: 1px solid #222;
-
-  transition:
-    transform 0.32s
-    cubic-bezier(0.2, 0.85, 0.25, 1);
+  width: 23%;
+  height: 95%;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f0f0f0 40%,
+    #d8d8d8 80%,
+    #c0c0c0 100%
+  );
+  border-radius: 7px;
+  border: 1.5px solid #1e1e1e;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4);
 }
 
 .gk-arm.left {
   left: 0;
-
-  transform: rotate(20deg);
-
+  transform: rotate(18deg);
   transform-origin: top center;
 }
 
 .gk-arm.right {
   right: 0;
-
-  transform: rotate(-20deg);
-
+  transform: rotate(-18deg);
   transform-origin: top center;
 }
-
 
 /* Luvas */
 
 .gk-arm::after {
   content: "";
-
   position: absolute;
-
-  bottom: -14%;
+  bottom: -16%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 150%;
-  height: 42%;
-
-  background:
-    linear-gradient(
-      160deg,
-      #ff5a5a 0%,
-      #e74c3c 40%,
-      #c0392b 100%
-    );
-
-  border-radius: 5px 5px 7px 7px;
-
-  border: 1px solid #7a1f1f;
-
+  width: 160%;
+  height: 46%;
+  background: linear-gradient(
+    160deg,
+    #ff6b6b 0%,
+    #e74c3c 35%,
+    #c0392b 70%,
+    #922b21 100%
+  );
+  border-radius: 6px 6px 9px 9px;
+  border: 1.5px solid #6b1a1a;
   box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.3),
-    0 1px 3px rgba(0, 0, 0, 0.35);
+    inset 0 3px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.4);
 }
-
 
 /* =========================================================
    PERNAS
@@ -1489,437 +1322,331 @@ body {
 
 .gk-legs {
   position: absolute;
-
   top: 55%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 54%;
-  height: 42%;
-
+  width: 52%;
+  height: 43%;
   z-index: 0;
 }
 
 .gk-leg {
   position: absolute;
-
   top: 0;
-
-  width: 38%;
+  width: 37%;
   height: 100%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #1a1a2e 0%,
-      #0d0d18 70%,
-      #111 100%
-    );
-
-  border-radius: 4px;
-
-  border: 1px solid #000;
-
-  transition:
-    transform 0.32s
-    cubic-bezier(0.2, 0.85, 0.25, 1);
+  background: linear-gradient(
+    180deg,
+    #1c1c2e 0%,
+    #12121f 50%,
+    #0a0a12 85%,
+    #08080e 100%
+  );
+  border-radius: 5px;
+  border: 1.5px solid #000;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.06);
 }
 
 .gk-leg.left {
-  left: 2%;
+  left: 3%;
 }
 
 .gk-leg.right {
-  right: 2%;
+  right: 3%;
 }
-
 
 /* Chuteiras */
 
 .gk-leg::after {
   content: "";
-
   position: absolute;
-
-  bottom: -2%;
+  bottom: -3%;
   left: 50%;
-
   transform: translateX(-50%);
-
-  width: 120%;
-  height: 14%;
-
-  background: #111;
-
-  border-radius: 2px 2px 4px 4px;
-
+  width: 125%;
+  height: 16%;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 60%, #000 100%);
+  border-radius: 3px 3px 5px 5px;
   border: 1px solid #000;
-
   box-shadow:
-    0 1px 0 #e74c3c;
+    0 1px 0 #e74c3c,
+    0 2px 3px rgba(0, 0, 0, 0.5);
 }
-
 
 /* =========================================================
    MERGULHOS
    ========================================================= */
 
-
-/* Mergulho para esquerda */
-
 .goalkeeper.dive-left {
   left: 20%;
   bottom: 16%;
-
-  transform:
-    translateX(-50%)
-    rotate(-18deg);
+  transform: translateX(-50%) rotate(-20deg);
 }
-
-
-/* Mergulho para direita */
 
 .goalkeeper.dive-right {
   left: 80%;
   bottom: 16%;
-
-  transform:
-    translateX(-50%)
-    rotate(18deg);
+  transform: translateX(-50%) rotate(20deg);
 }
-
-
-/* Defesa alta */
 
 .goalkeeper.dive-up {
   left: 50%;
   bottom: 44%;
-
-  transform:
-    translateX(-50%)
-    scale(1.05);
+  transform: translateX(-50%) scale(1.06);
 }
-
-
-/* Defesa central */
 
 .goalkeeper.dive-stay {
   left: 50%;
   bottom: 20%;
-
-  transform:
-    translateX(-50%)
-    scale(1.03);
+  transform: translateX(-50%) scale(1.04);
 }
 
-
-/* =========================================================
-   BRAÇOS - MERGULHO ESQUERDO
-   ========================================================= */
+/* Braços – mergulho esquerdo */
 
 .goalkeeper.dive-left .gk-arm.left {
-  transform: rotate(-35deg) !important;
+  transform: rotate(-38deg) !important;
 }
 
 .goalkeeper.dive-left .gk-arm.right {
-  transform: rotate(55deg) !important;
+  transform: rotate(58deg) !important;
 }
 
 .goalkeeper.dive-left .gk-leg.left {
-  transform: rotate(18deg);
-
+  transform: rotate(20deg);
   transform-origin: top center;
 }
 
 .goalkeeper.dive-left .gk-leg.right {
-  transform: rotate(-8deg);
-
+  transform: rotate(-10deg);
   transform-origin: top center;
 }
 
-
-/* =========================================================
-   BRAÇOS - MERGULHO DIREITO
-   ========================================================= */
+/* Braços – mergulho direito */
 
 .goalkeeper.dive-right .gk-arm.left {
-  transform: rotate(-55deg) !important;
+  transform: rotate(-58deg) !important;
 }
 
 .goalkeeper.dive-right .gk-arm.right {
-  transform: rotate(35deg) !important;
+  transform: rotate(38deg) !important;
 }
 
 .goalkeeper.dive-right .gk-leg.left {
-  transform: rotate(8deg);
-
+  transform: rotate(10deg);
   transform-origin: top center;
 }
 
 .goalkeeper.dive-right .gk-leg.right {
-  transform: rotate(-18deg);
-
+  transform: rotate(-20deg);
   transform-origin: top center;
 }
 
-
-/* =========================================================
-   DEFESA ALTA
-   ========================================================= */
+/* Defesa alta */
 
 .goalkeeper.dive-up .gk-arm.left {
-  transform: rotate(-50deg) !important;
+  transform: rotate(-55deg) !important;
 }
 
 .goalkeeper.dive-up .gk-arm.right {
-  transform: rotate(50deg) !important;
+  transform: rotate(55deg) !important;
 }
 
 .goalkeeper.dive-up .gk-leg.left,
 .goalkeeper.dive-up .gk-leg.right {
-  transform: rotate(0deg) scaleY(0.92);
-
+  transform: rotate(0deg) scaleY(0.9);
   transform-origin: top center;
 }
 
-
-/* =========================================================
-   DEFESA CENTRAL
-   ========================================================= */
+/* Defesa central */
 
 .goalkeeper.dive-stay .gk-arm.left {
-  transform: rotate(-12deg) !important;
+  transform: rotate(-14deg) !important;
 }
 
 .goalkeeper.dive-stay .gk-arm.right {
-  transform: rotate(12deg) !important;
+  transform: rotate(14deg) !important;
 }
-
 
 /* =========================================================
    POSES DE DEFESA POR ZONA
    ========================================================= */
 
 .goalkeeper.save-pose .gk-arm {
-  transition:
-    transform 0.3s
-    cubic-bezier(0.33, 0.12, 0.2, 1);
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-
-/* Zona 0 - alta esquerda */
+/* Zona 0 – alta esquerda */
 
 .goalkeeper.save-z0 {
   left: 24% !important;
   bottom: 48% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(-16deg) !important;
+  transform: translateX(-50%) rotate(-18deg) !important;
 }
 
 .goalkeeper.save-z0 .gk-arm.left {
-  transform: rotate(-68deg) !important;
+  transform: rotate(-72deg) !important;
 }
 
 .goalkeeper.save-z0 .gk-arm.right {
-  transform: rotate(8deg) !important;
+  transform: rotate(10deg) !important;
 }
 
-
-/* Zona 1 - alta centro */
+/* Zona 1 – alta centro */
 
 .goalkeeper.save-z1 {
   left: 50% !important;
   bottom: 52% !important;
-
-  transform:
-    translateX(-50%)
-    scale(1.05) !important;
+  transform: translateX(-50%) scale(1.06) !important;
 }
 
 .goalkeeper.save-z1 .gk-arm.left {
-  transform: rotate(-62deg) !important;
+  transform: rotate(-65deg) !important;
 }
 
 .goalkeeper.save-z1 .gk-arm.right {
-  transform: rotate(62deg) !important;
+  transform: rotate(65deg) !important;
 }
 
-
-/* Zona 2 - alta direita */
+/* Zona 2 – alta direita */
 
 .goalkeeper.save-z2 {
   left: 76% !important;
   bottom: 48% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(16deg) !important;
+  transform: translateX(-50%) rotate(18deg) !important;
 }
 
 .goalkeeper.save-z2 .gk-arm.left {
-  transform: rotate(-8deg) !important;
+  transform: rotate(-10deg) !important;
 }
 
 .goalkeeper.save-z2 .gk-arm.right {
-  transform: rotate(68deg) !important;
+  transform: rotate(72deg) !important;
 }
 
-
-/* Zona 3 - meio esquerda */
+/* Zona 3 – meio esquerda */
 
 .goalkeeper.save-z3 {
   left: 22% !important;
   bottom: 30% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(-18deg) !important;
+  transform: translateX(-50%) rotate(-20deg) !important;
 }
 
 .goalkeeper.save-z3 .gk-arm.left {
-  transform: rotate(-52deg) !important;
+  transform: rotate(-55deg) !important;
 }
 
 .goalkeeper.save-z3 .gk-arm.right {
-  transform: rotate(38deg) !important;
+  transform: rotate(40deg) !important;
 }
 
-
-/* Zona 4 - meio centro */
+/* Zona 4 – meio centro */
 
 .goalkeeper.save-z4 {
   left: 50% !important;
   bottom: 32% !important;
-
-  transform:
-    translateX(-50%)
-    scale(1.04) !important;
+  transform: translateX(-50%) scale(1.05) !important;
 }
 
 .goalkeeper.save-z4 .gk-arm.left {
-  transform: rotate(-42deg) !important;
+  transform: rotate(-45deg) !important;
 }
 
 .goalkeeper.save-z4 .gk-arm.right {
-  transform: rotate(42deg) !important;
+  transform: rotate(45deg) !important;
 }
 
-
-/* Zona 5 - meio direita */
+/* Zona 5 – meio direita */
 
 .goalkeeper.save-z5 {
   left: 78% !important;
   bottom: 30% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(18deg) !important;
+  transform: translateX(-50%) rotate(20deg) !important;
 }
 
 .goalkeeper.save-z5 .gk-arm.left {
-  transform: rotate(-38deg) !important;
+  transform: rotate(-40deg) !important;
 }
 
 .goalkeeper.save-z5 .gk-arm.right {
-  transform: rotate(52deg) !important;
+  transform: rotate(55deg) !important;
 }
 
-
-/* Zona 6 - baixa esquerda */
+/* Zona 6 – baixa esquerda */
 
 .goalkeeper.save-z6 {
   left: 24% !important;
   bottom: 12% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(-24deg) !important;
+  transform: translateX(-50%) rotate(-26deg) !important;
 }
 
 .goalkeeper.save-z6 .gk-arm.left {
-  transform: rotate(-28deg) !important;
+  transform: rotate(-30deg) !important;
 }
 
 .goalkeeper.save-z6 .gk-arm.right {
-  transform: rotate(48deg) !important;
+  transform: rotate(50deg) !important;
 }
 
-
-/* Zona 7 - baixa centro */
+/* Zona 7 – baixa centro */
 
 .goalkeeper.save-z7 {
   left: 50% !important;
   bottom: 10% !important;
-
-  transform:
-    translateX(-50%) !important;
+  transform: translateX(-50%) !important;
 }
 
 .goalkeeper.save-z7 .gk-arm.left {
-  transform: rotate(-28deg) !important;
+  transform: rotate(-30deg) !important;
 }
 
 .goalkeeper.save-z7 .gk-arm.right {
-  transform: rotate(28deg) !important;
+  transform: rotate(30deg) !important;
 }
 
-
-/* Zona 8 - baixa direita */
+/* Zona 8 – baixa direita */
 
 .goalkeeper.save-z8 {
   left: 76% !important;
   bottom: 12% !important;
-
-  transform:
-    translateX(-50%)
-    rotate(24deg) !important;
+  transform: translateX(-50%) rotate(26deg) !important;
 }
 
 .goalkeeper.save-z8 .gk-arm.left {
-  transform: rotate(-48deg) !important;
+  transform: rotate(-50deg) !important;
 }
 
 .goalkeeper.save-z8 .gk-arm.right {
-  transform: rotate(28deg) !important;
+  transform: rotate(30deg) !important;
 }
-
 
 /* Luvas destacadas durante defesa */
 
 .goalkeeper.save-pose .gk-arm::after {
-  width: 165%;
-  height: 44%;
-
+  width: 175%;
+  height: 48%;
   box-shadow:
-    0 0 12px rgba(255, 70, 70, 0.5);
+    0 0 14px rgba(255, 70, 70, 0.55),
+    inset 0 3px 0 rgba(255, 255, 255, 0.35);
 }
-
 
 /* =========================================================
    COMEMORAÇÃO / TRISTE
    ========================================================= */
 
 .goalkeeper.celebrate .gk-arm.left {
-  transform: rotate(-50deg) !important;
+  transform: rotate(-55deg) !important;
 }
 
 .goalkeeper.celebrate .gk-arm.right {
-  transform: rotate(50deg) !important;
+  transform: rotate(55deg) !important;
 }
 
 .goalkeeper.sad {
-  opacity: 0.85;
-
-  transform:
-    translateX(-50%)
-    scale(0.95);
-
-  filter: grayscale(0.2);
+  opacity: 0.82;
+  transform: translateX(-50%) scale(0.94);
+  filter: grayscale(0.25) brightness(0.9);
 }
-
 
 /* =========================================================
    BOLA
@@ -1945,7 +1672,6 @@ body {
   transition: none;
 }
 
-
 /* Interior da bola */
 
 .ball-inner {
@@ -1967,19 +1693,13 @@ body {
       rgba(245, 245, 245, 0.5) 28%,
       transparent 50%
     ),
-    radial-gradient(
-      circle at 50% 50%,
-      #f7f7f7 0%,
-      #e8e8e8 45%,
-      #c0c0c0 100%
-    );
+    radial-gradient(circle at 50% 50%, #f7f7f7 0%, #e8e8e8 45%, #c0c0c0 100%);
 
   box-shadow:
     inset -4px -5px 10px rgba(0, 0, 0, 0.28),
     inset 3px 3px 6px rgba(255, 255, 255, 0.5),
     0 3px 8px rgba(0, 0, 0, 0.4);
 }
-
 
 /* Pentágono central */
 
@@ -1994,26 +1714,16 @@ body {
   width: 28%;
   height: 28%;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
   background: #111;
 
-  clip-path:
-    polygon(
-      50% 0%,
-      100% 38%,
-      82% 100%,
-      18% 100%,
-      0% 38%
-    );
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
 
-  box-shadow:
-    0 0 0 1px #000;
+  box-shadow: 0 0 0 1px #000;
 
   z-index: 2;
 }
-
 
 /* Costuras da bola */
 
@@ -2073,7 +1783,6 @@ body {
   z-index: 1;
 }
 
-
 /* Sombra da bola */
 
 .ball-shadow {
@@ -2094,7 +1803,6 @@ body {
   filter: blur(2px);
 }
 
-
 /* Dica de mira */
 
 .aim-hint {
@@ -2108,7 +1816,6 @@ body {
 
   text-align: center;
 }
-
 
 /* =========================================================
    BARRA DE CONTROLES
@@ -2128,19 +1835,17 @@ body {
 
   padding: 12px 16px 18px;
 
-  background:
-    linear-gradient(
-      0deg,
-      rgba(4, 8, 16, 0.55) 0%,
-      rgba(4, 8, 16, 0.2) 70%,
-      transparent 100%
-    );
+  background: linear-gradient(
+    0deg,
+    rgba(4, 8, 16, 0.55) 0%,
+    rgba(4, 8, 16, 0.2) 70%,
+    transparent 100%
+  );
 
   flex-wrap: wrap;
 
   border-top: none;
 }
-
 
 /* Barra de força */
 
@@ -2184,28 +1889,19 @@ body {
 
   border: 2px solid rgba(255, 255, 255, 0.22);
 
-  box-shadow:
-    inset 0 2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .power-fill {
   width: 50%;
   height: 100%;
 
-  background:
-    linear-gradient(
-      90deg,
-      #00ff88,
-      #ffd700,
-      #ff3366
-    );
+  background: linear-gradient(90deg, #00ff88, #ffd700, #ff3366);
 
   border-radius: 6px;
 
-  transition:
-    width 0.05s linear;
+  transition: width 0.05s linear;
 }
-
 
 /* =========================================================
    MENSAGEM DE RESULTADO
@@ -2217,8 +1913,7 @@ body {
   top: 52%;
   left: 50%;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
   z-index: 80;
 
@@ -2244,8 +1939,7 @@ body {
 
   border-radius: 22px;
 
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
 
   pointer-events: none;
 }
@@ -2255,10 +1949,7 @@ body {
 
   line-height: 1;
 
-  filter:
-    drop-shadow(
-      0 2px 10px rgba(0, 0, 0, 0.5)
-    );
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
 .result-msg .rm-text {
@@ -2270,8 +1961,7 @@ body {
 
   letter-spacing: 3px;
 
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
 }
 
 .result-msg .rm-sub {
@@ -2288,15 +1978,12 @@ body {
   margin-top: 2px;
 }
 
-
 /* Gol */
 
 .result-msg.result-goal {
-  border-color:
-    rgba(0, 255, 136, 0.55);
+  border-color: rgba(0, 255, 136, 0.55);
 
-  box-shadow:
-    0 10px 36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.65);
 }
 
 .result-msg.result-goal .rm-text {
@@ -2304,40 +1991,32 @@ body {
 }
 
 .result-msg.result-goal .rm-icon {
-  animation:
-    goalBounce 0.6s ease;
+  animation: goalBounce 0.6s ease;
 }
-
 
 /* Defesa */
 
 .result-msg.result-save {
-  border-color:
-    rgba(0, 200, 255, 0.55);
+  border-color: rgba(0, 200, 255, 0.55);
 
-  box-shadow:
-    0 10px 36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.65);
 }
 
 .result-msg.result-save .rm-text {
   color: #00ccff;
 }
 
-
 /* Erro / fora */
 
 .result-msg.result-miss {
-  border-color:
-    rgba(255, 51, 102, 0.55);
+  border-color: rgba(255, 51, 102, 0.55);
 
-  box-shadow:
-    0 10px 36px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.65);
 }
 
 .result-msg.result-miss .rm-text {
   color: #ff3366;
 }
-
 
 /* =========================================================
    MENSAGEM DE TRANSIÇÃO
@@ -2349,8 +2028,7 @@ body {
   top: 50%;
   left: 50%;
 
-  transform:
-    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
   z-index: 40;
 
@@ -2373,7 +2051,6 @@ body {
   text-align: center;
 }
 
-
 /* =========================================================
    MORTE SÚBITA
    ========================================================= */
@@ -2381,8 +2058,7 @@ body {
 .sudden-container {
   text-align: center;
 
-  animation:
-    fadeInUp 0.5s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
 .sudden-title {
@@ -2394,8 +2070,7 @@ body {
 
   color: var(--secondary);
 
-  text-shadow:
-    0 0 30px rgba(255, 51, 102, 0.6);
+  text-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
 
   margin-bottom: 16px;
 
@@ -2418,7 +2093,6 @@ body {
   color: var(--accent);
 }
 
-
 /* =========================================================
    TELA FINAL
    ========================================================= */
@@ -2428,8 +2102,7 @@ body {
 
   text-align: center;
 
-  animation:
-    fadeInUp 0.7s ease;
+  animation: fadeInUp 0.7s ease;
 }
 
 .end-title {
@@ -2451,13 +2124,9 @@ body {
 .trophy {
   font-size: 5rem;
 
-  animation:
-    trophyBounce 1s ease infinite;
+  animation: trophyBounce 1s ease infinite;
 
-  filter:
-    drop-shadow(
-      0 0 20px rgba(255, 215, 0, 0.6)
-    );
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
 }
 
 .champ-label {
@@ -2477,12 +2146,7 @@ body {
 
   font-weight: 900;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ffd700,
-      #ffaa00
-    );
+  background: linear-gradient(135deg, #ffd700, #ffaa00);
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2498,7 +2162,6 @@ body {
 
   color: var(--text);
 }
-
 
 /* Estatísticas */
 
@@ -2524,7 +2187,6 @@ body {
   color: var(--primary);
 }
 
-
 /* Botões finais */
 
 .end-buttons {
@@ -2534,7 +2196,6 @@ body {
 
   gap: 12px;
 }
-
 
 /* =========================================================
    HISTÓRICO
@@ -2590,8 +2251,7 @@ body {
 
   border-radius: 10px;
 
-  border-left:
-    4px solid var(--primary);
+  border-left: 4px solid var(--primary);
 }
 
 .history-item .h-score {
@@ -2626,11 +2286,82 @@ body {
   gap: 10px;
 }
 
-
 /* =========================================================
    CLASSE AUXILIAR
    ========================================================= */
 
 .hidden {
   display: none !important;
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes gkIdle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes menuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes goalBounce {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes trophyBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
