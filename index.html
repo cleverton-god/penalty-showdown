@@ -1,601 +1,397 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
-  <!-- Bloqueia zoom em dispositivos móveis -->
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  >
+    <!-- Bloqueia zoom em dispositivos móveis -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-  <title>Penalty Showdown</title>
+    <title>Penalty Showdown</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  >
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-  <div id="app">
+  <body>
+    <div id="app">
+      <!-- Background Stadium -->
+      <div id="stadium-bg" class="stadium-bg night">
+        <div class="sky"></div>
 
-    <!-- Background Stadium -->
-    <div id="stadium-bg" class="stadium-bg night">
-      <div class="sky"></div>
+        <div class="stadium-bowl">
+          <div class="stand-tier tier-top"></div>
+          <div class="stand-tier tier-mid"></div>
+          <div class="stand-tier tier-low"></div>
+          <div class="stand-rim"></div>
+          <div class="stand-side left"></div>
+          <div class="stand-side right"></div>
+        </div>
 
-      <div class="stadium-bowl">
-        <div class="stand-tier tier-top"></div>
-        <div class="stand-tier tier-mid"></div>
-        <div class="stand-tier tier-low"></div>
-        <div class="stand-rim"></div>
-        <div class="stand-side left"></div>
-        <div class="stand-side right"></div>
+        <div class="field"></div>
+
+        <div class="floodlights">
+          <div class="light l1"></div>
+          <div class="light l2"></div>
+          <div class="light l3"></div>
+          <div class="light l4"></div>
+        </div>
+
+        <div class="crowd crowd-back" id="crowd-back"></div>
+        <div class="crowd crowd-mid" id="crowd-mid"></div>
+        <div class="crowd crowd-front" id="crowd"></div>
       </div>
 
-      <div class="field"></div>
+      <!-- Screens -->
+      <div id="screen-menu" class="screen active">
+        <div class="menu-container">
+          <h1 class="title">PENALTY<br />SHOWDOWN</h1>
+          <p class="subtitle">A disputa começa agora!</p>
 
-      <div class="floodlights">
-        <div class="light l1"></div>
-        <div class="light l2"></div>
-        <div class="light l3"></div>
-        <div class="light l4"></div>
-      </div>
+          <div class="inputs">
+            <div class="input-group">
+              <label for="player1-name">Jogador 1</label>
 
-      <div class="crowd crowd-back" id="crowd-back"></div>
-      <div class="crowd crowd-mid" id="crowd-mid"></div>
-      <div class="crowd crowd-front" id="crowd"></div>
-    </div>
+              <input
+                type="text"
+                id="player1-name"
+                maxlength="12"
+                placeholder="Jogador 1"
+                value="Jogador 1"
+              />
 
-    <!-- Screens -->
-    <div id="screen-menu" class="screen active">
-      <div class="menu-container">
+              <div class="color-picker">
+                <span>Cor:</span>
 
-        <h1 class="title">PENALTY<br>SHOWDOWN</h1>
-        <p class="subtitle">A disputa começa agora!</p>
+                <button
+                  class="color-btn active"
+                  data-color="#e74c3c"
+                  style="background: #e74c3c"
+                ></button>
 
-        <div class="inputs">
+                <button
+                  class="color-btn"
+                  data-color="#3498db"
+                  style="background: #3498db"
+                ></button>
 
-          <div class="input-group">
-            <label for="player1-name">Jogador 1</label>
+                <button
+                  class="color-btn"
+                  data-color="#2ecc71"
+                  style="background: #2ecc71"
+                ></button>
 
-            <input
-              type="text"
-              id="player1-name"
-              maxlength="12"
-              placeholder="Jogador 1"
-              value="Jogador 1"
-            >
+                <button
+                  class="color-btn"
+                  data-color="#f1c40f"
+                  style="background: #f1c40f"
+                ></button>
+              </div>
+            </div>
 
-            <div class="color-picker">
-              <span>Cor:</span>
+            <div class="input-group">
+              <label for="player2-name">Jogador 2</label>
 
-              <button
-                class="color-btn active"
-                data-color="#e74c3c"
-                style="background:#e74c3c"
-              ></button>
+              <input
+                type="text"
+                id="player2-name"
+                maxlength="12"
+                placeholder="Jogador 2"
+                value="Jogador 2"
+              />
 
-              <button
-                class="color-btn"
-                data-color="#3498db"
-                style="background:#3498db"
-              ></button>
+              <div class="color-picker">
+                <span>Cor:</span>
 
-              <button
-                class="color-btn"
-                data-color="#2ecc71"
-                style="background:#2ecc71"
-              ></button>
+                <button
+                  class="color-btn active"
+                  data-color="#3498db"
+                  style="background: #3498db"
+                ></button>
 
-              <button
-                class="color-btn"
-                data-color="#f1c40f"
-                style="background:#f1c40f"
-              ></button>
+                <button
+                  class="color-btn"
+                  data-color="#e74c3c"
+                  style="background: #e74c3c"
+                ></button>
+
+                <button
+                  class="color-btn"
+                  data-color="#9b59b6"
+                  style="background: #9b59b6"
+                ></button>
+
+                <button
+                  class="color-btn"
+                  data-color="#1abc9c"
+                  style="background: #1abc9c"
+                ></button>
+              </div>
             </div>
           </div>
 
-          <div class="input-group">
-            <label for="player2-name">Jogador 2</label>
+          <div class="options">
+            <div class="option option-full">
+              <label>Estádio</label>
 
-            <input
-              type="text"
-              id="player2-name"
-              maxlength="12"
-              placeholder="Jogador 2"
-              value="Jogador 2"
-            >
-
-            <div class="color-picker">
-              <span>Cor:</span>
-
-              <button
-                class="color-btn active"
-                data-color="#3498db"
-                style="background:#3498db"
-              ></button>
-
-              <button
-                class="color-btn"
-                data-color="#e74c3c"
-                style="background:#e74c3c"
-              ></button>
-
-              <button
-                class="color-btn"
-                data-color="#9b59b6"
-                style="background:#9b59b6"
-              ></button>
-
-              <button
-                class="color-btn"
-                data-color="#1abc9c"
-                style="background:#1abc9c"
-              ></button>
+              <select id="stadium">
+                <option value="night" selected>🌙 Noturno</option>
+                <option value="day">☀️ Diurno</option>
+              </select>
             </div>
           </div>
 
-        </div>
+          <button id="btn-start" class="btn primary">COMEÇAR PARTIDA</button>
 
-        <div class="options">
-          <div class="option option-full">
+          <button id="btn-history" class="btn secondary">HISTÓRICO</button>
 
-            <label>Estádio</label>
-
-            <select id="stadium">
-              <option value="night" selected>🌙 Noturno</option>
-              <option value="day">☀️ Diurno</option>
-            </select>
-
+          <div class="sound-toggle">
+            <button id="btn-sound" class="btn-icon" title="Som">🔊</button>
           </div>
         </div>
+      </div>
 
-        <button id="btn-start" class="btn primary">
-          COMEÇAR PARTIDA
-        </button>
+      <!-- Intro -->
+      <div id="screen-intro" class="screen">
+        <div class="intro-container">
+          <h2 class="intro-title">PENALTY SHOWDOWN</h2>
 
-        <button id="btn-history" class="btn secondary">
-          HISTÓRICO
-        </button>
+          <div class="vs-box">
+            <div class="player-intro" id="intro-p1">
+              <span class="p-name" id="intro-name1"> JOGADOR 1 </span>
 
-        <div class="sound-toggle">
-          <button id="btn-sound" class="btn-icon" title="Som">
-            🔊
+              <div class="p-color" id="intro-color1"></div>
+            </div>
+
+            <div class="vs">VS</div>
+
+            <div class="player-intro" id="intro-p2">
+              <span class="p-name" id="intro-name2"> JOGADOR 2 </span>
+
+              <div class="p-color" id="intro-color2"></div>
+            </div>
+          </div>
+
+          <p class="intro-info">5 cobranças para cada jogador</p>
+
+          <div id="countdown" class="countdown">3</div>
+
+          <button id="btn-continue" class="btn primary hidden">
+            CONTINUAR
           </button>
         </div>
-
-      </div>
-    </div>
-
-    <!-- Intro -->
-    <div id="screen-intro" class="screen">
-
-      <div class="intro-container">
-
-        <h2 class="intro-title">
-          PENALTY SHOWDOWN
-        </h2>
-
-        <div class="vs-box">
-
-          <div class="player-intro" id="intro-p1">
-            <span class="p-name" id="intro-name1">
-              JOGADOR 1
-            </span>
-
-            <div class="p-color" id="intro-color1"></div>
-          </div>
-
-          <div class="vs">VS</div>
-
-          <div class="player-intro" id="intro-p2">
-            <span class="p-name" id="intro-name2">
-              JOGADOR 2
-            </span>
-
-            <div class="p-color" id="intro-color2"></div>
-          </div>
-
-        </div>
-
-        <p class="intro-info">
-          5 cobranças para cada jogador
-        </p>
-
-        <div id="countdown" class="countdown">
-          3
-        </div>
-
-        <button
-          id="btn-continue"
-          class="btn primary hidden"
-        >
-          CONTINUAR
-        </button>
-
-      </div>
-    </div>
-
-    <!-- Game -->
-    <div id="screen-game" class="screen screen-game">
-
-      <div class="confetti-container" id="confetti"></div>
-
-      <div class="game-hud">
-
-        <div class="scoreboard">
-
-          <div class="sb-title">
-            PENALTY SHOWDOWN
-          </div>
-
-          <div class="sb-main">
-
-            <div class="sb-player p1">
-              <span class="sb-name" id="sb-name1">
-                P1
-              </span>
-
-              <span class="sb-score" id="sb-score1">
-                0
-              </span>
-            </div>
-
-            <div class="sb-vs">×</div>
-
-            <div class="sb-player p2">
-              <span class="sb-score" id="sb-score2">
-                0
-              </span>
-
-              <span class="sb-name" id="sb-name2">
-                P2
-              </span>
-            </div>
-
-          </div>
-
-          <div class="sb-shots">
-
-            <div
-              class="shots-row"
-              id="shots-p1"
-            ></div>
-
-            <div
-              class="shots-row"
-              id="shots-p2"
-            ></div>
-
-          </div>
-
-        </div>
-
-        <div class="turn-info">
-
-          <div class="turn-label">
-            VEZ DE
-          </div>
-
-          <div
-            class="turn-name"
-            id="turn-name"
-          >
-            JOGADOR
-          </div>
-
-          <div
-            class="turn-round"
-            id="turn-round"
-          >
-            COBRANÇA 1/5
-          </div>
-
-        </div>
-
       </div>
 
-      <div
-        class="pitch-container"
-        id="pitch"
-      >
+      <!-- Game -->
+      <div id="screen-game" class="screen screen-game">
+        <div class="confetti-container" id="confetti"></div>
 
-        <div
-          class="goal-area"
-          id="goal-area"
-        >
+        <div class="game-hud">
+          <div class="scoreboard">
+            <div class="sb-title">PENALTY SHOWDOWN</div>
 
-          <div class="goal">
+            <div class="sb-main">
+              <div class="sb-player p1">
+                <span class="sb-name" id="sb-name1"> P1 </span>
 
-            <div class="goal-post left"></div>
-            <div class="goal-post right"></div>
-
-            <div class="goal-crossbar"></div>
-
-            <div class="goal-net"></div>
-
-            <div
-              class="goal-zones"
-              id="goal-zones"
-            ></div>
-
-          </div>
-
-          <div
-            class="goalkeeper"
-            id="goalkeeper"
-          >
-
-            <div class="gk-body">
-
-              <div class="gk-head">
-                <span class="gk-face"></span>
+                <span class="sb-score" id="sb-score1"> 0 </span>
               </div>
 
-              <div class="gk-torso">
-                <span class="gk-badge"></span>
+              <div class="sb-vs">×</div>
+
+              <div class="sb-player p2">
+                <span class="sb-score" id="sb-score2"> 0 </span>
+
+                <span class="sb-name" id="sb-name2"> P2 </span>
               </div>
-
-              <div class="gk-arms">
-
-                <div class="gk-arm left"></div>
-                <div class="gk-arm right"></div>
-
-              </div>
-
-              <div class="gk-legs">
-
-                <div class="gk-leg left"></div>
-                <div class="gk-leg right"></div>
-
-              </div>
-
             </div>
 
+            <div class="sb-shots">
+              <div class="shots-row" id="shots-p1"></div>
+
+              <div class="shots-row" id="shots-p2"></div>
+            </div>
           </div>
 
-          <div
-            class="ball"
-            id="ball"
-          >
+          <div class="turn-info">
+            <div class="turn-label">VEZ DE</div>
 
-            <div class="ball-inner"></div>
-            <div class="ball-shadow"></div>
+            <div class="turn-name" id="turn-name">JOGADOR</div>
 
+            <div class="turn-round" id="turn-round">COBRANÇA 1/5</div>
           </div>
-
         </div>
 
-      </div>
+        <div class="pitch-container" id="pitch">
+          <div class="goal-area" id="goal-area">
+            <div class="goal">
+              <div class="goal-post left"></div>
+              <div class="goal-post right"></div>
 
-      <p class="aim-hint">
-        Toque / clique no gol para mirar
-      </p>
+              <div class="goal-crossbar"></div>
 
-      <div class="controls-bar">
+              <div class="goal-net"></div>
 
-        <div class="power-bar-container">
+              <div class="goal-zones" id="goal-zones"></div>
+            </div>
 
-          <div class="power-label">
-            FORÇA
-            <span id="power-value">50%</span>
+            <div class="goalkeeper" id="goalkeeper">
+              <div class="gk-body">
+                <div class="gk-head">
+                  <span class="gk-face"></span>
+                </div>
+
+                <div class="gk-torso">
+                  <span class="gk-badge"></span>
+                </div>
+
+                <div class="gk-arms">
+                  <div class="gk-arm left"></div>
+                  <div class="gk-arm right"></div>
+                </div>
+
+                <div class="gk-legs">
+                  <div class="gk-leg left"></div>
+                  <div class="gk-leg right"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ball" id="ball">
+              <div class="ball-inner"></div>
+              <div class="ball-shadow"></div>
+            </div>
           </div>
-
-          <div class="power-bar">
-            <div
-              class="power-fill"
-              id="power-fill"
-            ></div>
-          </div>
-
         </div>
 
-        <button
-          id="btn-shoot"
-          class="btn shoot"
-        >
-          CHUTAR
-        </button>
+        <p class="aim-hint">Toque / clique no gol para mirar</p>
 
+        <div class="controls-bar">
+          <div class="power-bar-container">
+            <div class="power-label">
+              FORÇA
+              <span id="power-value">50%</span>
+            </div>
+
+            <div class="power-bar">
+              <div class="power-fill" id="power-fill"></div>
+            </div>
+          </div>
+
+          <button id="btn-shoot" class="btn shoot">CHUTAR</button>
+        </div>
+
+        <div id="result-msg" class="result-msg hidden"></div>
+
+        <div id="transition-msg" class="transition-msg hidden"></div>
       </div>
 
-      <div
-        id="result-msg"
-        class="result-msg hidden"
-      ></div>
+      <!-- Sudden Death -->
+      <div id="screen-sudden" class="screen">
+        <div class="sudden-container">
+          <h2 class="sudden-title">MORTE SÚBITA</h2>
 
-      <div
-        id="transition-msg"
-        class="transition-msg hidden"
-      ></div>
+          <p class="sudden-sub">Quem errar primeiro perde!</p>
 
+          <div class="sudden-countdown" id="sudden-count">3</div>
+        </div>
+      </div>
+
+      <!-- End -->
+      <div id="screen-end" class="screen">
+        <div class="end-container">
+          <h2 class="end-title">FIM DE JOGO</h2>
+
+          <div class="champion">
+            <div class="trophy">🏆</div>
+
+            <div class="champ-label">CAMPEÃO</div>
+
+            <div class="champ-name" id="champ-name">JOGADOR</div>
+          </div>
+
+          <div class="final-score" id="final-score">0 × 0</div>
+
+          <div class="stats" id="end-stats"></div>
+
+          <div class="end-buttons">
+            <button id="btn-replay" class="btn primary">JOGAR NOVAMENTE</button>
+
+            <button id="btn-new" class="btn secondary">NOVA PARTIDA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div id="screen-history" class="screen">
+        <div class="history-container">
+          <h2>HISTÓRICO DE PARTIDAS</h2>
+
+          <div id="history-list" class="history-list"></div>
+
+          <div class="history-buttons">
+            <button id="btn-clear-history" class="btn danger">
+              LIMPAR HISTÓRICO
+            </button>
+
+            <button id="btn-back-menu" class="btn secondary">VOLTAR</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Sudden Death -->
-    <div id="screen-sudden" class="screen">
+    <script type="module" src="js/main.js"></script>
 
-      <div class="sudden-container">
-
-        <h2 class="sudden-title">
-          MORTE SÚBITA
-        </h2>
-
-        <p class="sudden-sub">
-          Quem errar primeiro perde!
-        </p>
-
-        <div
-          class="sudden-countdown"
-          id="sudden-count"
-        >
-          3
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- End -->
-    <div id="screen-end" class="screen">
-
-      <div class="end-container">
-
-        <h2 class="end-title">
-          FIM DE JOGO
-        </h2>
-
-        <div class="champion">
-
-          <div class="trophy">
-            🏆
-          </div>
-
-          <div class="champ-label">
-            CAMPEÃO
-          </div>
-
-          <div
-            class="champ-name"
-            id="champ-name"
-          >
-            JOGADOR
-          </div>
-
-        </div>
-
-        <div
-          class="final-score"
-          id="final-score"
-        >
-          0 × 0
-        </div>
-
-        <div
-          class="stats"
-          id="end-stats"
-        ></div>
-
-        <div class="end-buttons">
-
-          <button
-            id="btn-replay"
-            class="btn primary"
-          >
-            JOGAR NOVAMENTE
-          </button>
-
-          <button
-            id="btn-new"
-            class="btn secondary"
-          >
-            NOVA PARTIDA
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- History -->
-    <div id="screen-history" class="screen">
-
-      <div class="history-container">
-
-        <h2>
-          HISTÓRICO DE PARTIDAS
-        </h2>
-
-        <div
-          id="history-list"
-          class="history-list"
-        ></div>
-
-        <div class="history-buttons">
-
-          <button
-            id="btn-clear-history"
-            class="btn danger"
-          >
-            LIMPAR HISTÓRICO
-          </button>
-
-          <button
-            id="btn-back-menu"
-            class="btn secondary"
-          >
-            VOLTAR
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script type="module" src="js/main.js"></script>
-
-  <!-- BLOQUEIO DE ZOOM -->
-  <script>
-    // Bloqueia Ctrl + (+), Ctrl + (-), Ctrl + (=) e Ctrl + (0)
-    document.addEventListener('keydown', (event) => {
-      if (
-        event.ctrlKey &&
-        (
-          event.key === '+' ||
-          event.key === '-' ||
-          event.key === '=' ||
-          event.key === '0'
-        )
-      ) {
-        event.preventDefault();
-      }
-    });
-
-    // Bloqueia Ctrl + roda do mouse
-    document.addEventListener(
-      'wheel',
-      (event) => {
-        if (event.ctrlKey) {
+    <!-- BLOQUEIO DE ZOOM -->
+    <script>
+      // Bloqueia Ctrl + (+), Ctrl + (-), Ctrl + (=) e Ctrl + (0)
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.ctrlKey &&
+          (event.key === "+" ||
+            event.key === "-" ||
+            event.key === "=" ||
+            event.key === "0")
+        ) {
           event.preventDefault();
         }
-      },
-      { passive: false }
-    );
+      });
 
-    // Bloqueia gestos de zoom em dispositivos compatíveis
-    document.addEventListener(
-      'gesturestart',
-      (event) => {
+      // Bloqueia Ctrl + roda do mouse
+      document.addEventListener(
+        "wheel",
+        (event) => {
+          if (event.ctrlKey) {
+            event.preventDefault();
+          }
+        },
+        { passive: false },
+      );
+
+      // Bloqueia gestos de zoom em dispositivos compatíveis
+      document.addEventListener("gesturestart", (event) => {
         event.preventDefault();
-      }
-    );
+      });
 
-    document.addEventListener(
-      'gesturechange',
-      (event) => {
+      document.addEventListener("gesturechange", (event) => {
         event.preventDefault();
-      }
-    );
+      });
 
-    document.addEventListener(
-      'gestureend',
-      (event) => {
+      document.addEventListener("gestureend", (event) => {
         event.preventDefault();
-      }
-    );
-  </script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
 ```

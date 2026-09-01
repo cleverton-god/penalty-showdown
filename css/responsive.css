@@ -1,114 +1,150 @@
-/* ========== TABLET ========== */
-@media (max-width: 900px) {
-  .menu-container {
-    padding: 28px 24px;
-    max-width: 420px;
-  }
+/* =========================================================
+   RESPONSIVIDADE - PENALTY SHOWDOWN
+   Base visual: 1920x1080
+   ========================================================= */
 
-  .title {
-    font-size: 2.2rem;
+/* ---------------------------------------------------------
+   VARIÁVEIS DE ESCALA
+   --------------------------------------------------------- */
+
+:root {
+  --game-scale: clamp(0.7, 100vw / 1920, 1);
+}
+
+/* ---------------------------------------------------------
+   TELAS GRANDES
+   1920x1080 / 1600x900 / 1440x900
+   --------------------------------------------------------- */
+
+@media (min-width: 1400px) {
+  .pitch-container {
+    padding: 8px 20px;
   }
 
   .goal-area {
-    width: min(320px, 90%);
+    width: min(500px, 96%);
+    max-height: 64vh;
   }
 
-  .result-msg {
-    font-size: 2.5rem;
+  .goalkeeper {
+    width: 19%;
+    max-width: 76px;
+    min-width: 42px;
+  }
+
+  .ball {
+    width: 10%;
+    max-width: 34px;
+    min-width: 22px;
   }
 }
 
-/* ========== MOBILE ========== */
-@media (max-width: 600px) {
-  .menu-container {
-    padding: 18px 14px;
-    border-radius: 16px;
-    max-width: 94vw;
+
+
+/* ---------------------------------------------------------
+   1024x768 / 1024x720
+   --------------------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .game-hud {
+    padding: 7px 8px;
+    gap: 7px;
   }
 
-  .title {
-    font-size: 1.65rem;
-    letter-spacing: 1px;
+  .scoreboard {
+    max-width: 220px;
+    padding: 6px 9px;
   }
 
-  .subtitle {
-    font-size: 0.88rem;
-    margin-bottom: 16px;
+  .sb-name {
+    font-size: 0.85rem;
+    max-width: 58px;
   }
 
-  .inputs {
-    gap: 12px;
-  }
-
-  .input-group input {
-    padding: 11px 12px;
-    font-size: 0.95rem;
-  }
-
-  .options {
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .option select {
-    width: 100%;
-  }
-
-  .btn {
-    padding: 13px 18px;
-    font-size: 0.88rem;
-  }
-
-  .vs-box {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .vs {
+  .sb-score {
     font-size: 1.5rem;
   }
 
-  .player-intro {
-    min-width: 120px;
-    padding: 12px 18px;
+  .turn-info {
+    min-width: 100px;
+    padding: 6px 9px;
   }
 
-  .p-name {
-    font-size: 1.15rem;
-  }
-
-  .countdown {
-    font-size: 3.5rem;
-  }
-
-  .intro-title {
+  .turn-name {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    max-width: 110px;
   }
+
+  .pitch-container {
+    padding: 3px 8px;
+  }
+
+  .goal-area {
+    width: min(430px, 88%);
+    max-height: 58vh;
+  }
+
+  .goalkeeper {
+    width: 18%;
+    max-width: 64px;
+    min-width: 38px;
+  }
+
+  .ball {
+    width: 9%;
+    max-width: 28px;
+    min-width: 19px;
+  }
+
+  .controls-bar {
+    gap: 10px;
+    padding: 7px 10px 10px;
+  }
+
+  .btn.shoot {
+    min-width: 120px;
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   TABLETS / TELAS VERTICAIS
+   --------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .screen {
+    padding: 12px;
+  }
+
+  /* HUD */
 
   .game-hud {
-    padding: 8px 8px 4px;
+    padding: 6px;
     gap: 6px;
   }
 
   .scoreboard {
-    padding: 6px 10px;
     max-width: none;
-    flex: 1 1 55%;
+    padding: 6px 8px;
   }
 
   .sb-title {
     font-size: 0.5rem;
+    letter-spacing: 1px;
   }
 
   .sb-name {
-    max-width: 56px;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
+    max-width: 52px;
   }
 
   .sb-score {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
+  }
+
+  .sb-vs {
+    font-size: 0.9rem;
   }
 
   .shot-dot {
@@ -117,236 +153,443 @@
   }
 
   .turn-info {
-    padding: 6px 10px;
     min-width: 90px;
+    padding: 6px 8px;
+  }
+
+  .turn-label {
+    font-size: 0.55rem;
   }
 
   .turn-name {
-    font-size: 0.95rem;
-    max-width: 100px;
+    font-size: 1.05rem;
+    max-width: 90px;
   }
 
   .turn-round {
-    font-size: 0.68rem;
-  }
-
-  .pitch-container {
-    padding: 4px 8px;
-  }
-
-  .goal-area {
-    width: min(360px, 96%);
-    max-height: 48vh;
-  }
-
-  .result-msg {
-    padding: 14px 22px;
-    min-width: 160px;
-  }
-
-  .result-msg .rm-icon {
-    font-size: 2rem;
-  }
-
-  .result-msg .rm-text {
-    font-size: 1.35rem;
-  }
-
-  .result-msg .rm-sub {
     font-size: 0.65rem;
   }
 
-  .aim-hint {
-    font-size: 0.7rem;
-    margin-top: 6px;
-  }
+  /* CAMPO / GOL */
 
-  .controls-bar {
-    padding: 8px 12px 14px;
-    gap: 12px;
-  }
-
-  .power-bar-container {
-    width: min(160px, 48vw);
-  }
-
-  .btn.shoot {
-    padding: 12px 28px;
-    font-size: 0.95rem;
-    min-width: 120px;
-  }
-
-  .result-msg {
-    font-size: 1.8rem;
-    padding: 0 10px;
-  }
-
-  .transition-msg {
-    font-size: 1rem;
-    padding: 16px 20px;
-    max-width: 90vw;
-  }
-
-  .sudden-title {
-    font-size: 1.6rem;
-  }
-
-  .sudden-countdown {
-    font-size: 3rem;
-  }
-
-  .champ-name {
-    font-size: 1.5rem;
-  }
-
-  .trophy {
-    font-size: 3rem;
-  }
-
-  .final-score {
-    font-size: 1.15rem;
-  }
-
-  .stats {
-    font-size: 0.82rem;
-    padding: 10px 14px;
-  }
-
-  .history-container {
-    padding: 14px;
-    max-width: 94vw;
-  }
-}
-
-/* ========== SMALL PHONES ========== */
-@media (max-width: 380px) {
-  .title {
-    font-size: 1.4rem;
+  .pitch-container {
+    padding: 2px 6px;
+    justify-content: center;
   }
 
   .goal-area {
-    width: 96%;
-    max-height: 44vh;
+    width: min(420px, 94vw);
+    max-width: 94vw;
+    max-height: 52vh;
   }
 
-  .sb-name {
-    max-width: 44px;
-    font-size: 0.7rem;
+  .goal {
+    width: 88%;
+    height: 72%;
+    border-width: 4px;
+  }
+
+  .goalkeeper {
+    width: 18%;
+    max-width: 58px;
+    min-width: 34px;
+  }
+
+  .ball {
+    width: 9%;
+    max-width: 26px;
+    min-width: 18px;
+  }
+
+  /* CONTROLES */
+
+  .controls-bar {
+    gap: 8px;
+    padding: 6px 8px 9px;
+  }
+
+  .power-bar-container {
+    width: min(190px, 50vw);
+  }
+
+  .power-bar {
+    height: 13px;
+  }
+
+  .power-label {
+    font-size: 0.6rem;
   }
 
   .btn.shoot {
+    min-width: 110px;
     padding: 11px 22px;
     font-size: 0.9rem;
-    min-width: 110px;
-  }
-
-  .result-msg {
-    font-size: 1.5rem;
   }
 }
 
-/* ========== LANDSCAPE PHONES ========== */
-@media (max-height: 480px) and (orientation: landscape) {
-  .menu-container {
-    padding: 10px 20px;
-    max-height: 96vh;
-    overflow-y: auto;
+/* ---------------------------------------------------------
+   CELULAR PEQUENO
+   --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .game-hud {
+    padding: 5px;
+    gap: 5px;
   }
 
-  .title {
-    font-size: 1.3rem;
-    margin-bottom: 2px;
+  .scoreboard {
+    padding: 5px 6px;
   }
 
-  .subtitle {
-    margin-bottom: 8px;
-    font-size: 0.78rem;
+  .sb-name {
+    max-width: 42px;
+    font-size: 0.7rem;
   }
 
-  .inputs {
-    flex-direction: row;
-    gap: 10px;
+  .sb-score {
+    font-size: 1.25rem;
   }
 
-  .options {
-    flex-direction: row;
-    margin-bottom: 8px;
+  .shot-dot {
+    width: 8px;
+    height: 8px;
   }
 
-  .btn {
-    padding: 8px 16px;
-    margin-bottom: 4px;
+  .turn-info {
+    min-width: 78px;
+    padding: 5px 6px;
   }
 
+  .turn-name {
+    font-size: 0.9rem;
+    max-width: 75px;
+  }
+
+  .turn-round {
+    font-size: 0.58rem;
+  }
+
+  .goal-area {
+    width: min(360px, 92vw);
+    max-height: 48vh;
+  }
+
+  .goalkeeper {
+    width: 18%;
+    max-width: 52px;
+    min-width: 30px;
+  }
+
+  .ball {
+    width: 9%;
+    max-width: 23px;
+    min-width: 17px;
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    gap: 7px;
+    padding: 5px 7px 8px;
+  }
+
+  .power-bar-container {
+    width: min(230px, 70vw);
+  }
+
+  .btn.shoot {
+    width: 100%;
+    max-width: 230px;
+  }
+}
+
+/* ---------------------------------------------------------
+   CELULAR MUITO PEQUENO / ALTURA PEQUENA
+   --------------------------------------------------------- */
+
+@media (max-height: 700px) and (min-width: 700px) {
+  .game-hud {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .pitch-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .goal-area {
+    max-height: 56vh;
+  }
+
+  .controls-bar {
+    padding-top: 4px;
+    padding-bottom: 6px;
+  }
+
+  .power-bar {
+    height: 12px;
+  }
+}
+
+/* ---------------------------------------------------------
+   TELAS MUITO BAIXAS
+   Ex.: 1280x600 / notebooks
+   --------------------------------------------------------- */
+
+@media (max-height: 650px) {
   .game-hud {
     padding: 4px 8px;
   }
 
   .scoreboard {
-    padding: 4px 8px;
-  }
-
-  .sb-score {
-    font-size: 1.05rem;
+    padding: 5px 8px;
   }
 
   .turn-info {
-    padding: 4px 8px;
+    padding: 5px 8px;
   }
 
   .pitch-container {
-    padding: 2px 8px;
+    padding: 0 8px;
   }
 
   .goal-area {
-    width: min(280px, 50vw);
-    max-height: 58vh;
-  }
-
-  .aim-hint {
-    display: none;
+    max-height: 53vh;
   }
 
   .controls-bar {
-    padding: 4px 12px 8px;
-    gap: 10px;
+    padding: 4px 8px 6px;
+    gap: 8px;
   }
 
-  .power-bar-container {
-    width: 140px;
+  .power-bar {
+    height: 12px;
+  }
+
+  .btn.shoot {
+    padding: 10px 24px;
+  }
+}
+
+/* ---------------------------------------------------------
+   ALTURA EXTREMAMENTE PEQUENA
+   --------------------------------------------------------- */
+
+@media (max-height: 560px) {
+  .goal-area {
+    max-height: 48vh;
+  }
+
+  .goalkeeper {
+    max-width: 54px;
+  }
+
+  .ball {
+    max-width: 25px;
+  }
+
+  .controls-bar {
+    padding: 3px 6px 4px;
+  }
+
+  .power-label {
+    margin-bottom: 2px;
   }
 
   .power-bar {
     height: 10px;
   }
+}
 
-  .btn.shoot {
-    padding: 8px 20px;
-    font-size: 0.85rem;
-    min-width: 100px;
+/* ---------------------------------------------------------
+   MENU RESPONSIVO
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .menu-container {
+    padding: 28px 22px;
+    max-width: 94vw;
+    border-radius: 18px;
   }
 
-  .countdown {
-    font-size: 2.5rem;
+  .title {
+    font-size: 2.2rem;
   }
 
-  .result-msg {
-    font-size: 1.5rem;
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+
+  .inputs {
+    gap: 14px;
+  }
+
+  .options {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .option select {
+    width: 100%;
+  }
+
+  .btn {
+    padding: 14px 24px;
   }
 }
 
-/* Touch targets */
-@media (pointer: coarse) {
-  .zone {
-    min-height: 28px;
+/* ---------------------------------------------------------
+   INTRO
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .intro-title {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
   }
 
-  .btn.shoot {
-    min-height: 46px;
+  .vs-box {
+    gap: 12px;
   }
 
-  .color-btn {
-    width: 32px;
-    height: 32px;
+  .player-intro {
+    padding: 16px 18px;
+    min-width: 120px;
+  }
+
+  .p-name {
+    font-size: 1.05rem;
+  }
+
+  .vs {
+    font-size: 1.8rem;
+  }
+
+  .countdown {
+    font-size: 4.5rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   TELA FINAL
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .end-container {
+    max-width: 94vw;
+  }
+
+  .trophy {
+    font-size: 4rem;
+  }
+
+  .champ-name {
+    font-size: 1.8rem;
+  }
+
+  .final-score {
+    font-size: 1.4rem;
+  }
+
+  .stats {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   HISTÓRICO
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .history-container {
+    padding: 20px;
+    max-width: 94vw;
+    max-height: 86vh;
+  }
+
+  .history-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .history-item {
+    padding: 11px 14px;
+  }
+}
+
+/* ---------------------------------------------------------
+   RESULTADO
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .result-msg {
+    min-width: 190px;
+    max-width: 86vw;
+    padding: 17px 24px;
+    border-radius: 18px;
+  }
+
+  .result-msg .rm-icon {
+    font-size: 2.4rem;
+  }
+
+  .result-msg .rm-text {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .result-msg .rm-sub {
+    font-size: 0.65rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   TRANSIÇÃO
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .transition-msg {
+    width: 88vw;
+    padding: 22px 25px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   EVITA ELEMENTOS SAÍREM DA TELA
+   --------------------------------------------------------- */
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------
+   SAFE AREA PARA CELULARES
+   --------------------------------------------------------- */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  .controls-bar {
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------------------------------------------------------
+   DISPOSITIVOS COM TOUCH
+   --------------------------------------------------------- */
+
+@media (hover: none) and (pointer: coarse) {
+  .zone:hover {
+    background: transparent;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .color-btn:hover {
+    transform: none;
   }
 }
