@@ -26,24 +26,43 @@ export class Goalkeeper {
   }
 
   chooseDive(shotZone) {
-    // Lê o chute com frequência alta
-    const readChance = 0.72;
+    // DIFICULDADE MÉDIA
+    // O goleiro lê corretamente cerca de 58% dos chutes.
+    const readChance = 0.58;
+
     const side = ZONE_SIDE[shotZone] || 'center';
     const height = ZONE_HEIGHT[shotZone] || 'mid';
 
     let dive;
+
     if (Math.random() < readChance) {
-      if (side === 'left') dive = 'left';
-      else if (side === 'right') dive = 'right';
-      else {
-        if (height === 'high') dive = 'up';
-        else if (height === 'low') dive = 'stay';
-        else dive = Math.random() < 0.55 ? 'stay' : 'up';
+      // Leitura correta
+      if (side === 'left') {
+        dive = 'left';
+      } else if (side === 'right') {
+        dive = 'right';
+      } else {
+        if (height === 'high') {
+          dive = 'up';
+        } else if (height === 'low') {
+          dive = 'stay';
+        } else {
+          dive = Math.random() < 0.55 ? 'stay' : 'up';
+        }
       }
     } else {
-      if (side === 'left') dive = ['right', 'up', 'stay'][Math.floor(Math.random() * 3)];
-      else if (side === 'right') dive = ['left', 'up', 'stay'][Math.floor(Math.random() * 3)];
-      else dive = Math.random() < 0.5 ? 'left' : 'right';
+      // Leitura errada
+      if (side === 'left') {
+        dive = ['right', 'up', 'stay'][
+          Math.floor(Math.random() * 3)
+        ];
+      } else if (side === 'right') {
+        dive = ['left', 'up', 'stay'][
+          Math.floor(Math.random() * 3)
+        ];
+      } else {
+        dive = Math.random() < 0.5 ? 'left' : 'right';
+      }
     }
 
     this.currentDir = dive;
@@ -52,17 +71,35 @@ export class Goalkeeper {
 
   _clearPose() {
     if (!this.el) return;
+
     this.el.classList.remove(
-      'dive-left', 'dive-right', 'dive-up', 'dive-stay',
-      'save-pose', 'celebrate', 'sad',
-      'save-z0','save-z1','save-z2','save-z3','save-z4','save-z5','save-z6','save-z7','save-z8'
+      'dive-left',
+      'dive-right',
+      'dive-up',
+      'dive-stay',
+      'save-pose',
+      'celebrate',
+      'sad',
+      'save-z0',
+      'save-z1',
+      'save-z2',
+      'save-z3',
+      'save-z4',
+      'save-z5',
+      'save-z6',
+      'save-z7',
+      'save-z8'
     );
   }
 
   _setMoveDuration(ms) {
     if (!this.el) return;
+
     const d = Math.max(280, Math.min(520, ms));
-    this.el.style.transitionDuration = `${d}ms, ${d}ms, ${d}ms, 0.3s, 0.3s`;
+
+    this.el.style.transitionDuration =
+      `${d}ms, ${d}ms, ${d}ms, 0.3s, 0.3s`;
+
     this.el.querySelectorAll('.gk-arm, .gk-leg').forEach(n => {
       n.style.transitionDuration = `${Math.round(d * 0.85)}ms`;
     });
@@ -70,29 +107,52 @@ export class Goalkeeper {
 
   animate(state, shotZone = null, durationMs = 400) {
     if (!this.el) return;
+
     this._clearPose();
     this._setMoveDuration(durationMs);
 
     if (state === 'left' || state === 'dive-left') {
       this.el.classList.add('dive-left');
+
     } else if (state === 'right' || state === 'dive-right') {
       this.el.classList.add('dive-right');
+
     } else if (state === 'up' || state === 'dive-up') {
       this.el.classList.add('dive-up');
+
     } else if (state === 'stay' || state === 'center') {
       this.el.classList.add('dive-stay');
+
     } else if (state === 'save') {
       const z = shotZone != null ? shotZone : 4;
-      this.el.classList.add('save-pose', 'save-z' + z);
-      this.currentDir = ZONE_SIDE[z] === 'center'
-        ? (ZONE_HEIGHT[z] === 'high' ? 'up' : 'stay')
-        : ZONE_SIDE[z];
+
+      this.el.classList.add(
+        'save-pose',
+        'save-z' + z
+      );
+
+      this.currentDir =
+        ZONE_SIDE[z] === 'center'
+          ? (
+              ZONE_HEIGHT[z] === 'high'
+                ? 'up'
+                : 'stay'
+            )
+          : ZONE_SIDE[z];
+
     } else if (state === 'celebrate') {
-      if (this.currentDir === 'left') this.el.classList.add('dive-left');
-      else if (this.currentDir === 'right') this.el.classList.add('dive-right');
-      else if (this.currentDir === 'up') this.el.classList.add('dive-up');
-      else this.el.classList.add('dive-stay');
+      if (this.currentDir === 'left') {
+        this.el.classList.add('dive-left');
+      } else if (this.currentDir === 'right') {
+        this.el.classList.add('dive-right');
+      } else if (this.currentDir === 'up') {
+        this.el.classList.add('dive-up');
+      } else {
+        this.el.classList.add('dive-stay');
+      }
+
       this.el.classList.add('celebrate');
+
     } else if (state === 'sad') {
       this.el.classList.add('sad');
     }
@@ -102,14 +162,18 @@ export class Goalkeeper {
     if (this.el) {
       this._setMoveDuration(450);
       this._clearPose();
+
       setTimeout(() => {
         if (!this.el) return;
+
         this.el.style.transitionDuration = '';
+
         this.el.querySelectorAll('.gk-arm, .gk-leg').forEach(n => {
           n.style.transitionDuration = '';
         });
       }, 500);
     }
+
     this.currentDir = 'center';
   }
 
@@ -119,52 +183,134 @@ export class Goalkeeper {
     const isCorner = [0, 2, 6, 8].includes(shotZone);
 
     let diveSide = 'center';
-    if (diveDir === 'left') diveSide = 'left';
-    else if (diveDir === 'right') diveSide = 'right';
 
-    // Lado oposto — ainda raro, mas não impossível
+    if (diveDir === 'left') {
+      diveSide = 'left';
+    } else if (diveDir === 'right') {
+      diveSide = 'right';
+    }
+
+    // =====================================================
+    // LADO OPOSTO
+    // =====================================================
+
     if (
       (shotSide === 'left' && diveSide === 'right') ||
       (shotSide === 'right' && diveSide === 'left')
     ) {
+      return Math.random() < 0.04;
+    }
+
+    // =====================================================
+    // CHUTE CENTRAL + GOLEIRO FOI PARA O LADO
+    // =====================================================
+
+    if (shotSide === 'center' && diveSide !== 'center') {
       return Math.random() < 0.10;
     }
 
-    if (shotSide === 'center' && diveSide !== 'center') {
-      return Math.random() < 0.16;
-    }
+    // =====================================================
+    // CHUTE NO LADO + GOLEIRO FICOU NO CENTRO
+    // =====================================================
 
     if (diveSide === 'center' && shotSide !== 'center') {
-      return Math.random() < 0.22;
+      return Math.random() < 0.14;
     }
 
     let saveChance;
 
+    // =====================================================
+    // CHUTES CENTRAIS
+    // =====================================================
+
     if (shotSide === 'center') {
+
       if (shotHeight === 'high') {
-        saveChance = (diveDir === 'up') ? 0.74 : 0.38;
+        saveChance =
+          diveDir === 'up'
+            ? 0.62
+            : 0.28;
+
       } else if (shotHeight === 'low') {
-        saveChance = (diveDir === 'stay' || diveDir === 'center') ? 0.70 : 0.42;
+        saveChance =
+          diveDir === 'stay' || diveDir === 'center'
+            ? 0.58
+            : 0.32;
+
       } else {
-        if (diveDir === 'stay' || diveDir === 'center') saveChance = 0.68;
-        else if (diveDir === 'up') saveChance = 0.62;
-        else saveChance = 0.18;
+        if (
+          diveDir === 'stay' ||
+          diveDir === 'center'
+        ) {
+          saveChance = 0.55;
+        } else if (diveDir === 'up') {
+          saveChance = 0.45;
+        } else {
+          saveChance = 0.12;
+        }
       }
-      if (power >= 50 && power <= 78) saveChance -= 0.05;
-      if (power > 90) saveChance += 0.04;
-      if (power < 30) saveChance += 0.10;
+
+      // Potência boa
+      if (power >= 50 && power <= 78) {
+        saveChance -= 0.07;
+      }
+
+      // Chute muito forte
+      if (power > 90) {
+        saveChance -= 0.10;
+      }
+
+      // Chute fraco
+      if (power < 30) {
+        saveChance += 0.10;
+      }
+
     } else {
-      // Lado correto — defende bastante
-      saveChance = 0.80;
-      if (shotHeight === 'high') saveChance -= 0.04;
-      if (shotHeight === 'low') saveChance += 0.03;
-      if (isCorner) saveChance -= 0.06;
-      if (power >= 48 && power <= 72) saveChance -= 0.04;
-      if (power > 90) saveChance += 0.03;
-      if (power < 28) saveChance += 0.08;
+
+      // ===================================================
+      // LADO CORRETO
+      // ===================================================
+
+      // Médio: 67%
+      saveChance = 0.67;
+
+      // Chute alto
+      if (shotHeight === 'high') {
+        saveChance -= 0.05;
+      }
+
+      // Chute baixo
+      if (shotHeight === 'low') {
+        saveChance += 0.02;
+      }
+
+      // Cantos
+      if (isCorner) {
+        saveChance -= 0.10;
+      }
+
+      // Potência boa
+      if (power >= 48 && power <= 72) {
+        saveChance -= 0.06;
+      }
+
+      // Chute muito forte
+      if (power > 90) {
+        saveChance -= 0.10;
+      }
+
+      // Chute fraco
+      if (power < 28) {
+        saveChance += 0.08;
+      }
     }
 
-    saveChance = Math.max(0.12, Math.min(0.90, saveChance));
+    // Limites
+    saveChance = Math.max(
+      0.08,
+      Math.min(0.82, saveChance)
+    );
+
     return Math.random() < saveChance;
   }
 }
